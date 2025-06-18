@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>simply e^xplained</title>
-    <link rel="stylesheet" href="css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&display=swap">
@@ -13,6 +12,9 @@
             margin: 0;
             padding: 0;
             font-family: "STIX Two Text", serif;
+            max-width: 100%;
+            overflow-x: hidden;
+            background-color: #E3DAC9;
         }
         #switch-text {
             display: inline-block;
@@ -24,9 +26,7 @@
             height: 100vh;
             width: auto;
             display: block;
-            margin: 0 auto;
-            object-fit: cover;
-            object-position: center;
+            max-width: 100vw;
         }
         #header-you {
             text-decoration: underline;
@@ -34,89 +34,259 @@
         }
         #hero-top-text {
             position: absolute;
-            top: 5%;
-            left: 25%;
-            transform: translateX(-50%);
-            text-align: left;
+            top: 10%;
+            left: 10%;
             color: #264653;
         }
         #hero-top-p1 {
-            font-size: 3rem;
+            font-size: 3.3vw;
             margin: 0;
         }
         #hero-top-p2 {
-            font-size: 4rem;
+            font-size: 4.4vw;
             margin: 0;
         }
-        #hero-bottom-text {
+        .scale {
             position: absolute;
-            bottom: 5%;
-            right: 5%;
             transform: translateX(-50%);
-            text-align: left;
             color: #264653;
         }
-        #hero-bottom-text h3 {
+        #hero-scale-Y {
+            bottom: 25px;
+            left: 50%;
+        }
+        #hero-scale-X {
+            top: calc(50% - 45px);
+            left: -35px;
+            transform: rotate(-90deg);
+        }
+        .scale h3 {
             font-style: italic;
             font-size: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+        #hero-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+        #hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #hero-text {
+            position: absolute;
+            top: 43%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #264653;
+            font-size: 5.8vw;
+            white-space: nowrap;
+            border: 5px dashed #264653;
+            padding-left: 25px;
+            padding-right: 25px;
+            border-radius: 15px;
+            text-decoration: none;
+            opacity: 0;
+            overflow: hidden;
+        }
+        #hero-text h1 {
+            margin: 0;
+            padding: 0;
+            font-size: inherit;
+            white-space: nowrap;
+        }
+        #hero-text.change {
+            opacity: 1;
+            transition: all 2s;
+        }
+        #hero-tan {
+            color: #d2b05f;
+        }
+        #hero-scroll {
+            position: absolute;
+            top: 53%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2.1em;
+            height: 4em;
+            border: solid 2px #264653;
+            border-radius: 30px;
+            display: none;
+        }
+        #hero-scroll::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1em;
+            height: 1em;
+            background-color: #264653;
+            border-radius: 50%;
+            animation: scroll 2.5s infinite;
+        }
+        @keyframes scroll {
+            0% {
+                top: 0;
+            }
+            90% {
+                top: 75%;
+                opacity: 0;
+            }
+            100% {
+                top: 0;
+                opacity: 0;
+            }
         }
     </style>
 </head>
 <body>
-<div id="hero">
-    <div id="hero-top-text">
-        <h2 id="hero-top-p1">Learning STEM isn't <span id="switch-text"></span>,</h2>
-        <h2 id="hero-top-p2">all <span id="header-you">you</span> need are...</h2>
+    <div id="hero">
+        <div id="hero-wrapper">
+            <div id="hero-top-text">
+                <h2 id="hero-top-p1">Learning STEM isn't <span id="switch-text">impossible</span>,</h2>
+                <h2 id="hero-top-p2">all <span id="header-you">you</span> need are...</h2>
+            </div>
+            <canvas id="hero-image"></canvas>
+            <a id="hero-text" href="https://youtube.com/@dheirya" target="_blank">
+                <h1>simple <span id="hero-tan">e<sup>x</sup></span>planations</h1>
+            </a>
+            <div id="hero-scale-X" class="scale">
+                <h3>knowledge</h3>
+            </div>
+            <div id="hero-scale-Y" class="scale">
+                <h3>time</h3>
+            </div>
+            <div id="hero-scroll"></div>
+        </div>
     </div>
-    <img src="img/graph.png" id="hero-image" alt="Graph of e^x function">
-    <div id="hero-bottom-text">
-        <h3>(get it?)</h3>
+    <div id="main">
+        <h1>The Mission</h1>
     </div>
-</div>
-<script src="js/scripts.js"></script>
-<script>
-    const switchText = document.getElementById('switch-text');
-    const words = ['difficult', 'overwhelming', 'boring', 'confusing', 'scary', 'impossible'];
-    let current = 1;
-    function typeWord(word, element) {
-        element.textContent = '';
-        let i = 0;
-        function type() {
-            if (i < word.length) {
-                element.textContent += word[i++];
-                setTimeout(type, 120);
-            } else {
+    <script src="https://unpkg.com/roughjs@4.6.6/bundled/rough.js"></script>
+    <script>
+        let canvas = document.getElementById('hero-image');
+        let width = window.innerWidth;
+        let height = window.innerHeight;
+        let margin = 75;
+        canvas.width = width;
+        canvas.height = height;
+        const rc = rough.canvas(canvas);
+        rc.line(margin, height - margin, width - (margin * 0.5), height - margin, {strokeWidth: 2, stroke: '#264653'});
+        rc.line(margin, height - margin, margin, margin, {strokeWidth: 2, stroke: '#264653'});
+        rc.line(width - (margin * 0.5), height - margin, width - margin, height - (margin * 1.5), {strokeWidth: 2, stroke: '#264653'});
+        rc.line(width - (margin * 0.5), height - margin, width - margin, height - (margin * 0.5), {strokeWidth: 2, stroke: '#264653'});
+        function generateExponentialPoints(startX, endX, startY, endY, numPoints = 100) {
+            const points = [];
+            const expBase = 4;
+            const maxExp = Math.exp(expBase) - 1;
+            for (let i = 0; i < numPoints; i++) {
+                const t = i / (numPoints - 1);
+                const rawExp = Math.exp(expBase * t) - 1;
+                const yNorm = rawExp / maxExp;
+                const x = startX + t * (endX - startX);
+                const y = startY - yNorm * (startY - endY);
+                points.push([x, y]);
+            }
+            return points;
+        }
+        const curvePoints = generateExponentialPoints(margin, width - margin, height - margin, margin, 30);
+        const shadedPoints = [...curvePoints];
+        shadedPoints.push([width - margin, height - margin]);
+        shadedPoints.push([margin, height - margin]);
+        function animateCurve(points, index = 1) {
+            if (index >= points.length) {
+                rc.line(width - margin, margin, width - (1.75 * margin), margin + (0.5 * margin), {strokeWidth: 3, stroke: '#d2b05f'});
+                rc.line(width - margin, margin, width - (0.8 * margin), margin + (0.75 * margin), {strokeWidth: 3, stroke: '#d2b05f'});
                 setTimeout(() => {
                     changeWord();
-                }, 100000);
+                }, 2000);
+                document.getElementById('hero-scroll').style.display = 'block';
+                return;
             }
-        }
-        type();
-    }
-    function backspaceWord(element, callback) {
-        let text = element.textContent;
-        function erase() {
-            if (text.length > 0) {
-                text = text.slice(0, -1);
-                element.textContent = text;
-                setTimeout(erase, 100);
-            } else if (callback) {
-                callback();
+            if (index + 5 === points.length) {
+                document.getElementById('hero-text').classList.add('change');
             }
+            rc.curve(points.slice(0, index + 1), {strokeWidth: 3, stroke: '#d2b05f'});
+            if (index > 1) {
+                const prev = points[index - 1];
+                const curr = points[index];
+                const baseY = height - margin;
+                const segment = [prev, curr, [curr[0], baseY], [prev[0], baseY]];
+                rc.polygon(segment, {fill: 'rgba(42, 157, 143, 0.3)', fillStyle: 'zigzag-line', fillWeight: 1.5, hachureGap: 4, curveFitting: 1, stroke: 'none'});
+            }
+            setTimeout(() => {
+                animateCurve(points, index + 1);
+            }, 50);
         }
-        erase();
-    }
-    function changeWord() {
-        backspaceWord(switchText, () => {
-            current = (current + 1) % words.length;
-            typeWord(words[current], switchText);
+        function reDrawScene() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+            canvas.getContext('2d').clearRect(0, 0, width, height);
+            rc.line(margin, height - margin, width - (margin * 0.5), height - margin, {strokeWidth: 2, stroke: '#264653'});
+            rc.line(margin, height - margin, margin, margin, {strokeWidth: 2, stroke: '#264653'});
+            rc.line(width - (margin * 0.5), height - margin, width - margin, height - (margin * 1.5), {strokeWidth: 2, stroke: '#264653'});
+            rc.line(width - (margin * 0.5), height - margin, width - margin, height - (margin * 0.5), {strokeWidth: 2, stroke: '#264653'});
+            const newCurvePoints = generateExponentialPoints(margin, width - margin, height - margin, margin, 30);
+            const newShadedPoints = [...newCurvePoints];
+            newShadedPoints.push([width - margin, height - margin]);
+            newShadedPoints.push([margin, height - margin]);
+            rc.curve(newCurvePoints, {strokeWidth: 3, stroke: '#d2b05f'});
+            rc.polygon(newShadedPoints, {fill: 'rgba(42, 157, 143, 0.3)', fillStyle: 'zigzag-line', fillWeight: 1.5, hachureGap: 4, curveFitting: 1, stroke: 'none'});
+        }
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                reDrawScene();
+            }, 100);
         });
-    }
-    document.addEventListener('DOMContentLoaded', () => {
-        setTimeout(() => {
-            typeWord(words[0], switchText);
-        }, 250);
-    });
-</script>
+        const words = ['impossible', 'overwhelming', 'boring', 'confusing', 'scary', 'difficult'];
+        let current = 1;
+        function typeWord(word) {
+            document.getElementById('switch-text').textContent = '';
+            let i = 0;
+            function type() {
+                if (i < word.length) {
+                    document.getElementById('switch-text').textContent += word[i++];
+                    setTimeout(type, 120);
+                } else {
+                    setTimeout(() => {
+                        changeWord();
+                    }, 5000);
+                }
+            }
+            type();
+        }
+        function backspaceWord(callback) {
+            let text = document.getElementById('switch-text').textContent;
+            function erase() {
+                if (text.length > 0) {
+                    text = text.slice(0, -1);
+                    document.getElementById('switch-text').textContent = text;
+                    setTimeout(erase, 100);
+                } else if (callback) {
+                    callback();
+                }
+            }
+            erase();
+        }
+        function changeWord() {
+            backspaceWord(() => {
+                current = (current + 1) % words.length;
+                typeWord(words[current]);
+            });
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function(){
+                animateCurve(curvePoints);
+            }, 250);
+        });
+    </script>
 </body>
 </html>
