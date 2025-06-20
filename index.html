@@ -6,15 +6,15 @@
     <title>simply e^xplained</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&display=swap">
-    <style>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">    <style>
         html, body {
             margin: 0;
             padding: 0;
             font-family: "STIX Two Text", serif;
             max-width: 100%;
-            overflow-x: hidden;
+            overflow: hidden;
             background-color: #E3DAC9;
+            scroll-behavior: smooth;
         }
         #switch-text {
             display: inline-block;
@@ -102,7 +102,7 @@
             opacity: 1;
             transition: all 2s;
         }
-        #hero-tan {
+        .hero-tan {
             color: #d2b05f;
         }
         #hero-scroll {
@@ -126,13 +126,13 @@
             height: 1em;
             background-color: #264653;
             border-radius: 50%;
-            animation: scroll 2.5s infinite;
+            animation: scroll 3s infinite;
         }
         @keyframes scroll {
             0% {
                 top: 0;
             }
-            90% {
+            80% {
                 top: 75%;
                 opacity: 0;
             }
@@ -141,10 +141,97 @@
                 opacity: 0;
             }
         }
+        #main {
+            margin: 0 4%;
+        }
+        #main-content {
+            display: flex;
+        }
+        #box-1 {
+            flex: 1;
+            background-color: #e9c89d;
+            padding: 3rem;
+            margin: 1rem 0.5rem 2rem 0;
+            border-radius: 10px;
+        }
+        #box-2 {
+            flex: 2;
+            background-color: #e9c89d;
+            padding: 3rem;
+            margin: 1rem 0 2rem 0.5rem;
+            border-radius: 10px;
+        }
+        #container {
+            height: 100vh;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+        #container h1 {
+            margin: 0;
+        }
+        #hero, #main {
+            scroll-snap-align: start;
+        }
+        #navbar {
+            width: calc(100% - 4rem);
+            background-color: #4a4e69;
+            color: white;
+            display: flex;
+            border-radius: 10px;
+            padding: 0 2rem;
+            position: sticky !important;
+            top: 1rem;
+            z-index: 100;
+        }
+        #nav-links-right {
+            margin-left: auto;
+            display: flex;
+            gap: 1rem;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+        #nav-links-right a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        #nav-links-right a:hover {
+            text-decoration: underline;
+        }
+        #navbar h2 {
+            font-family: 'STIX Two Text', serif;
+            font-weight: 700;
+            font-size: 1.75rem;
+            color: white;
+        }
+        #main-content {
+            color: #1e2a34;
+        }
+        #main-content p {
+            font-family: "Montserrat", sans-serif;
+            color: #1e2a34;
+            line-height: 1.6;
+        }
+        .carousel-cell {
+            border-radius: 10px;
+            margin: 0.35rem 0.5rem;
+            transition: transform 0.3s ease;
+            width: 30%;
+        }
+        #box-2 h3 {
+            font-family: "Montserrat", sans-serif;
+            color: #264653;
+            margin: 0.5rem 0 0 0;
+        }
     </style>
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css"/>
 </head>
 <body>
-    <div id="hero">
+    <div id="container">
+        <div id="hero">
         <div id="hero-wrapper">
             <div id="hero-top-text">
                 <h2 id="hero-top-p1">Learning STEM isn't <span id="switch-text">impossible</span>,</h2>
@@ -152,7 +239,7 @@
             </div>
             <canvas id="hero-image"></canvas>
             <a id="hero-text" href="https://youtube.com/@dheirya" target="_blank">
-                <h1>simple <span id="hero-tan">e<sup>x</sup></span>planations</h1>
+                <h1>simple <span class="hero-tan">e<sup>x</sup></span>planations</h1>
             </a>
             <div id="hero-scale-X" class="scale">
                 <h3>knowledge</h3>
@@ -163,11 +250,79 @@
             <div id="hero-scroll"></div>
         </div>
     </div>
-    <div id="main">
-        <h1>The Mission</h1>
+        <div id="main">
+            <br/>
+            <div id="navbar">
+                <h2><i>simple <span class="hero-tan">e<sup>x</sup></span>planations</i></h2>
+                <div id="nav-links-right">
+                    <a href="#">About</a>
+                    <a href="#">Videos</a>
+                    <a href="#">Contact</a>
+                </div>
+            </div>
+            <div id="main-content">
+                <div id="box-1">
+                    <h1>The Mission</h1>
+                    <p>Imagine learning one new thing every day. Doesn't seem like a lot, right? But imagine if you could do that every day for a year, or even longer. You'd have a wealth of knowledge at your fingertips, and the best part is, it doesn't have to be overwhelming.</p>
+                    <p>The goal of this website and my YouTube channel is to make learning STEM subjects accessible and enjoyable for everyone. I believe that with the right approach, anyone can grasp complex concepts without feeling lost or intimidated.</p>
+                    <p>...</p>
+                </div>
+                <div id="box-2">
+                    <h1>Recent Videos</h1>
+                    <h3>The Engineering Series</h3>
+                    <div id="carousel-1" class="main-carousel"></div>
+                    <h3>The Calculus Series</h3>
+                    <div id="carousel-2" class="main-carousel"></div>
+                    <h3>The Physics Series</h3>
+                    <div id="carousel-3" class="main-carousel"></div>
+                    <h3>The SAT Series</h3>
+                    <div id="carousel-4" class="main-carousel"></div>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="https://unpkg.com/roughjs@4.6.6/bundled/rough.js"></script>
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
     <script>
+        const apiKey = 'AIzaSyBmP157wx7RmjRmFhkhaKfBnoVU6D67Spo';
+        const maxResults = 25;
+        function makeCarousel(id, element, time) {
+            const apiUrl = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${id}&maxResults=${maxResults}&key=${apiKey}`;
+            fetch(apiUrl).then(response => response.json())
+                .then(data => {
+                    const videos = data.items;
+                    const carouselEl = document.getElementById(element);
+                    videos.forEach(video => {
+                        if (!video.snippet || !video.snippet.resourceId || !video.snippet.resourceId.videoId || !video.snippet.thumbnails || !video.snippet.thumbnails.medium) {
+                            console.warn('Skipping video with missing data:', video);
+                            return;
+                        }
+                        const videoId = video.snippet.resourceId.videoId;
+                        const thumbnail = video.snippet.thumbnails.medium.url;
+                        const videoLink = `https://www.youtube.com/watch?v=${videoId}`;
+                        const videoElement = document.createElement('img');
+                        videoElement.className = 'carousel-cell';
+                        videoElement.setAttribute('data-flickity-lazyload', thumbnail);
+                        carouselEl.appendChild(videoElement);
+                    });
+                    flickIT(element, time);
+                })
+                .catch(error => console.error('Error fetching YouTube data:', error));
+        }
+        makeCarousel('PLwG4ajavaJ9KSrTa6czhS00Kz7DtNUdAI', 'carousel-1', 16475);
+        makeCarousel('PLwG4ajavaJ9JYGO108KOpAvCPLozgPGYY', 'carousel-2', 9230);
+        makeCarousel('PLwG4ajavaJ9IU7fU7LiHL7Ycup1KKAen6', 'carousel-3', 11250);
+        makeCarousel('PLwG4ajavaJ9K68cpStVsCS6OCUEf9Mg3i', 'carousel-4', 14910);
+        function flickIT(element, time) {
+            let flkty = new Flickity('#' + element, {
+                cellAlign: 'left',
+                contain: true,
+                pageDots: false,
+                lazyLoad: 3,
+                wrapAround: true,
+                autoPlay: time
+            });
+        }
         let canvas = document.getElementById('hero-image');
         let width = window.innerWidth;
         let height = window.innerHeight;
@@ -237,6 +392,8 @@
             newShadedPoints.push([width - margin, height - margin]);
             newShadedPoints.push([margin, height - margin]);
             rc.curve(newCurvePoints, {strokeWidth: 3, stroke: '#d2b05f'});
+            rc.line(width - margin, margin, width - (1.75 * margin), margin + (0.5 * margin), {strokeWidth: 3, stroke: '#d2b05f'});
+            rc.line(width - margin, margin, width - (0.8 * margin), margin + (0.75 * margin), {strokeWidth: 3, stroke: '#d2b05f'});
             rc.polygon(newShadedPoints, {fill: 'rgba(42, 157, 143, 0.3)', fillStyle: 'zigzag-line', fillWeight: 1.5, hachureGap: 4, curveFitting: 1, stroke: 'none'});
         }
         let resizeTimeout;
