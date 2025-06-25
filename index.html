@@ -6,7 +6,7 @@
     <title>simply e^xplained</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <style>
         html, body {
             margin: 0;
@@ -115,7 +115,7 @@
             height: 4em;
             border: solid 2px #264653;
             border-radius: 30px;
-            display: none;
+            opacity: 0;
         }
         #hero-scroll::before {
             content: '';
@@ -128,6 +128,18 @@
             background-color: #264653;
             border-radius: 50%;
             animation: scroll 3s infinite;
+        }
+        #hero-scroll.fade-in {
+            animation: fade 2s forwards;
+            animation-iteration-count: 1;
+        }
+        @keyframes fade {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
         @keyframes scroll {
             0% {
@@ -149,14 +161,14 @@
             display: flex;
         }
         #box-1 {
-            flex: 1;
+            flex: 2;
             background-color: #e9c89d;
             padding: 3rem;
             margin: 1rem 0.5rem 2rem 0;
             border-radius: 10px;
         }
         #box-2 {
-            flex: 2;
+            flex: 3;
             background-color: #e9c89d;
             padding: 3rem;
             margin: 1rem 0 2rem 0.5rem;
@@ -182,7 +194,6 @@
             display: flex;
             border-radius: 10px;
             padding: 0 2rem;
-            position: sticky !important;
             top: 1rem;
             z-index: 100;
         }
@@ -218,6 +229,7 @@
         }
         .carousel-cell {
             border-radius: 10px;
+            border: 3px solid #264653;
             margin: 0.35rem 0.5rem;
             transition: transform 0.3s ease;
             width: 30%;
@@ -226,6 +238,15 @@
             font-family: "Montserrat", sans-serif;
             color: #264653;
             margin: 0.5rem 0 0 0;
+        }
+        #box-2 a {
+            text-decoration: none;
+            color: #264653;
+            font-style: italic;
+        }
+        #box-1 hr {
+            border: none;
+            border-top: 1px solid #264653;
         }
     </style>
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css"/>
@@ -257,8 +278,10 @@
                 <h2><i>simple <span class="hero-tan">e<sup>x</sup></span>planations</i></h2>
                 <div id="nav-links-right">
                     <a href="#">About</a>
-                    <a href="#">Videos</a>
+                    <a href="#">Resources</a>
                     <a href="#">Contact</a>
+                    <a href="#">AI Tool</a>
+                    <a href="#">Search</a>
                 </div>
             </div>
             <div id="main-content">
@@ -266,17 +289,23 @@
                     <h1>The Mission</h1>
                     <p>Imagine learning one new thing every day. Doesn't seem like a lot, right? But imagine if you could do that every day for a year, or even longer. You'd have a wealth of knowledge at your fingertips, and the best part is, it doesn't have to be overwhelming.</p>
                     <p>The goal of this website and my YouTube channel is to make learning STEM subjects accessible and enjoyable for everyone. I believe that with the right approach, anyone can grasp complex concepts without feeling lost or intimidated.</p>
+                    <h1>What's Here?</h1>
+                    <p>On this site, you will find links to all my videos, playlists, and resources. Additionally, you will have access to other tools like an AI study companion, review quizzes, and a means of directly contacting me for video suggestions/inquiries.</p>
                     <p>...</p>
+                    <hr/>
+                    <i>This website was designed with ❤&nbsp;&nbsp;by <a href="https://dheirya.is-a.dev" target="_blank">Dheirya Tyagi</a></i>
+                    <br/>
+                    <i><small>P.S...you should check out his other projects...I heard they were pretty cool :)</small></i>
                 </div>
                 <div id="box-2">
                     <h1>Recent Videos</h1>
-                    <h3>The Engineering Series</h3>
+                    <h3><a target="_blank" href="https://www.youtube.com/playlist?list=PLwG4ajavaJ9KSrTa6czhS00Kz7DtNUdAI">The Engineering Series</a></h3>
                     <div id="carousel-1" class="main-carousel"></div>
-                    <h3>The Calculus Series</h3>
+                    <h3><a target="_blank" href="https://www.youtube.com/playlist?list=PLwG4ajavaJ9JYGO108KOpAvCPLozgPGYY">The Calculus Series</a></h3>
                     <div id="carousel-2" class="main-carousel"></div>
-                    <h3>The Physics Series</h3>
+                    <h3><a target="_blank" href="https://www.youtube.com/playlist?list=PLwG4ajavaJ9IU7fU7LiHL7Ycup1KKAen6">The Physics Series</a></h3>
                     <div id="carousel-3" class="main-carousel"></div>
-                    <h3>The SAT Series</h3>
+                    <h3><a target="_blank" href="https://www.youtube.com/playlist?list=PLwG4ajavaJ9K68cpStVsCS6OCUEf9Mg3i">The SAT Series</a></h3>
                     <div id="carousel-4" class="main-carousel"></div>
                 </div>
             </div>
@@ -287,6 +316,13 @@
     <script>
         const apiKey = 'AIzaSyBmP157wx7RmjRmFhkhaKfBnoVU6D67Spo';
         const maxResults = 25;
+        function getRandomNonZeroInt() {
+            let num = 0;
+            while (-2 <= num && num <= 2) {
+                num = Math.floor(Math.random() * 21) - 10;
+            }
+            return num;
+        }
         function makeCarousel(id, element, time) {
             const apiUrl = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${id}&maxResults=${maxResults}&key=${apiKey}`;
             fetch(apiUrl).then(response => response.json())
@@ -303,17 +339,34 @@
                         const videoLink = `https://www.youtube.com/watch?v=${videoId}`;
                         const videoElement = document.createElement('img');
                         videoElement.className = 'carousel-cell';
+                        videoElement.onclick = () => {
+                            window.open(videoLink, '_blank');
+                        };
                         videoElement.setAttribute('data-flickity-lazyload', thumbnail);
                         carouselEl.appendChild(videoElement);
                     });
                     flickIT(element, time);
+                    const carouselCells = document.querySelectorAll('.carousel-cell');
+                    carouselCells.forEach(cell => {
+                        cell.addEventListener('mouseover', () => {
+                            if (cell.style.transform.indexOf('scale(1.06)') === -1) {
+                                cell.style.transform += ' scale(1.06)';
+                            }
+                            if (cell.style.transform.indexOf('rotate(') === -1) {
+                                cell.style.transform += ' rotate(' + getRandomNonZeroInt() + 'deg)';
+                            }
+                        });
+                        cell.addEventListener('mouseout', () => {
+                            cell.style.transform = cell.style.transform.replace('scale(1.06)', '').replace(/rotate\([-+]?\d+deg\)/, '').trim();
+                        });
+                    });
                 })
                 .catch(error => console.error('Error fetching YouTube data:', error));
         }
-        makeCarousel('PLwG4ajavaJ9KSrTa6czhS00Kz7DtNUdAI', 'carousel-1', 16475);
-        makeCarousel('PLwG4ajavaJ9JYGO108KOpAvCPLozgPGYY', 'carousel-2', 9230);
-        makeCarousel('PLwG4ajavaJ9IU7fU7LiHL7Ycup1KKAen6', 'carousel-3', 11250);
-        makeCarousel('PLwG4ajavaJ9K68cpStVsCS6OCUEf9Mg3i', 'carousel-4', 14910);
+        makeCarousel('PLwG4ajavaJ9KSrTa6czhS00Kz7DtNUdAI', 'carousel-1', 7000);
+        makeCarousel('PLwG4ajavaJ9JYGO108KOpAvCPLozgPGYY', 'carousel-2', 11000);
+        makeCarousel('PLwG4ajavaJ9IU7fU7LiHL7Ycup1KKAen6', 'carousel-3', 19000);
+        makeCarousel('PLwG4ajavaJ9K68cpStVsCS6OCUEf9Mg3i', 'carousel-4', 23000);
         function flickIT(element, time) {
             let flkty = new Flickity('#' + element, {
                 cellAlign: 'left',
@@ -360,7 +413,6 @@
                 setTimeout(() => {
                     changeWord();
                 }, 2000);
-                document.getElementById('hero-scroll').style.display = 'block';
                 return;
             }
             if (index + 5 === points.length) {
@@ -414,6 +466,11 @@
                     document.getElementById('switch-text').textContent += word[i++];
                     setTimeout(type, 120);
                 } else {
+                    if (!document.getElementById('hero-scroll').classList.contains('fade-in')) {
+                        setTimeout(() => {
+                            document.getElementById('hero-scroll').classList.add('fade-in');
+                        }, 1250);
+                    }
                     setTimeout(() => {
                         changeWord();
                     }, 5000);
