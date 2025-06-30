@@ -3,253 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>simply e^xplained</title>
+    <title>Simple E^xplanations</title>
+    <meta name="description" content="Simple E^xplanations helps students master STEM subjects through clear explanations, engaging YouTube videos, interactive quizzes, and personalized tutoring. Learn calculus, physics, engineering, and more—one concept at a time.">
+    <meta name="keywords" content="STEM education, YouTube learning, calculus tutorials, physics videos, engineering concepts, student tutoring, simple explanations, Dheirya Tyagi">
+    <meta name="author" content="Dheirya Tyagi">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta property="og:title" content="Simple E^xplanations">
+    <meta property="og:description" content="Clear and engaging STEM education through videos, quizzes, and tutorials. Perfect for students, learners, and the STEM-curious.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Simple E^xplanations">
+    <meta name="twitter:description" content="STEM concepts made simple. Explore videos and quizzes that make learning physics, calculus, and more accessible.">
+    <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
-    <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            font-family: "STIX Two Text", serif;
-            max-width: 100%;
-            overflow: hidden;
-            background-color: #E3DAC9;
-            scroll-behavior: smooth;
-        }
-        #switch-text {
-            display: inline-block;
-            transition: opacity 0.5s ease;
-            font-weight: bold;
-            color: #2a9d8f;
-        }
-        #hero-image {
-            height: 100vh;
-            width: auto;
-            display: block;
-            max-width: 100vw;
-        }
-        #header-you {
-            text-decoration: underline;
-            font-style: italic;
-        }
-        #hero-top-text {
-            position: absolute;
-            top: 10%;
-            left: 10%;
-            color: #264653;
-        }
-        #hero-top-p1 {
-            font-size: 3.3vw;
-            margin: 0;
-        }
-        #hero-top-p2 {
-            font-size: 4.4vw;
-            margin: 0;
-        }
-        .scale {
-            position: absolute;
-            transform: translateX(-50%);
-            color: #264653;
-        }
-        #hero-scale-Y {
-            bottom: 25px;
-            left: 50%;
-        }
-        #hero-scale-X {
-            top: calc(50% - 45px);
-            left: -35px;
-            transform: rotate(-90deg);
-        }
-        .scale h3 {
-            font-style: italic;
-            font-size: 2rem;
-            margin: 0;
-            padding: 0;
-        }
-        #hero-wrapper {
-            position: relative;
-            display: inline-block;
-        }
-        #hero {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        #hero-text {
-            position: absolute;
-            top: 43%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: #264653;
-            font-size: 5.8vw;
-            white-space: nowrap;
-            border: 5px dashed #264653;
-            padding-left: 25px;
-            padding-right: 25px;
-            border-radius: 15px;
-            text-decoration: none;
-            opacity: 0;
-            overflow: hidden;
-        }
-        #hero-text h1 {
-            margin: 0;
-            padding: 0;
-            font-size: inherit;
-            white-space: nowrap;
-        }
-        #hero-text.change {
-            opacity: 1;
-            transition: all 2s;
-        }
-        .hero-tan {
-            color: #d2b05f;
-        }
-        #hero-scroll {
-            position: absolute;
-            top: 53%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2.1em;
-            height: 4em;
-            border: solid 2px #264653;
-            border-radius: 30px;
-            opacity: 0;
-        }
-        #hero-scroll::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 1em;
-            height: 1em;
-            background-color: #264653;
-            border-radius: 50%;
-            animation: scroll 3s infinite;
-        }
-        #hero-scroll.fade-in {
-            animation: fade 2s forwards;
-            animation-iteration-count: 1;
-        }
-        @keyframes fade {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-        @keyframes scroll {
-            0% {
-                top: 0;
-            }
-            80% {
-                top: 75%;
-                opacity: 0;
-            }
-            100% {
-                top: 0;
-                opacity: 0;
-            }
-        }
-        #main {
-            margin: 0 4%;
-        }
-        #main-content {
-            display: flex;
-        }
-        #box-1 {
-            flex: 2;
-            background-color: #e9c89d;
-            padding: 3rem;
-            margin: 1rem 0.5rem 2rem 0;
-            border-radius: 10px;
-        }
-        #box-2 {
-            flex: 3;
-            background-color: #e9c89d;
-            padding: 3rem;
-            margin: 1rem 0 2rem 0.5rem;
-            border-radius: 10px;
-        }
-        #container {
-            height: 100vh;
-            overflow-y: scroll;
-            overflow-x: hidden;
-            scroll-snap-type: y mandatory;
-            scroll-behavior: smooth;
-        }
-        #container h1 {
-            margin: 0;
-        }
-        #hero, #main {
-            scroll-snap-align: start;
-        }
-        #navbar {
-            width: calc(100% - 4rem);
-            background-color: #4a4e69;
-            color: white;
-            display: flex;
-            border-radius: 10px;
-            padding: 0 2rem;
-            top: 1rem;
-            z-index: 100;
-        }
-        #nav-links-right {
-            margin-left: auto;
-            display: flex;
-            gap: 1rem;
-            margin-top: auto;
-            margin-bottom: auto;
-        }
-        #nav-links-right a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-        #nav-links-right a:hover {
-            text-decoration: underline;
-        }
-        #navbar h2 {
-            font-family: 'STIX Two Text', serif;
-            font-weight: 700;
-            font-size: 1.75rem;
-            color: white;
-        }
-        #main-content {
-            color: #1e2a34;
-        }
-        #main-content p {
-            font-family: "Montserrat", sans-serif;
-            color: #1e2a34;
-            line-height: 1.6;
-        }
-        .carousel-cell {
-            border-radius: 10px;
-            border: 3px solid #264653;
-            margin: 0.35rem 0.5rem;
-            transition: transform 0.3s ease;
-            width: 30%;
-        }
-        #box-2 h3 {
-            font-family: "Montserrat", sans-serif;
-            color: #264653;
-            margin: 0.5rem 0 0 0;
-        }
-        #box-2 a {
-            text-decoration: none;
-            color: #264653;
-            font-style: italic;
-        }
-        #box-1 hr {
-            border: none;
-            border-top: 1px solid #264653;
-        }
-    </style>
-    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css"/>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
     <div id="container">
@@ -277,28 +64,31 @@
             <div id="navbar">
                 <h2><i>simple <span class="hero-tan">e<sup>x</sup></span>planations</i></h2>
                 <div id="nav-links-right">
-                    <a href="#">About</a>
-                    <a href="#">Resources</a>
-                    <a href="#">Contact</a>
-                    <a href="#">AI Tool</a>
-                    <a href="#">Search</a>
+                    <a href="about.html">About</a>
+                    <a href="quizzes.html">Quizzes</a>
+                    <a href="resources.html">Resources</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="https://schoolhouse.world/u/dheirya" target="_blank">Tutoring</a>
+                    <a href="#" onclick="showSearchBar(event)">Search</a>
                 </div>
             </div>
             <div id="main-content">
                 <div id="box-1">
                     <h1>The Mission</h1>
-                    <p>Imagine learning one new thing every day. Doesn't seem like a lot, right? But imagine if you could do that every day for a year, or even longer. You'd have a wealth of knowledge at your fingertips, and the best part is, it doesn't have to be overwhelming.</p>
-                    <p>The goal of this website and my YouTube channel is to make learning STEM subjects accessible and enjoyable for everyone. I believe that with the right approach, anyone can grasp complex concepts without feeling lost or intimidated.</p>
+                    <p><b>Imagine learning one new thing every day.</b> Doesn't seem like a lot, right? But imagine if you could do that every day for a year, or even longer. You'd have accumulated a wealth of knowledge, and the best part is, it doesn't have to be overwhelming.</p>
+                    <p>My mission with this website and YouTube channel is to make learning STEM education clear, fun, and approachable—especially for students, self-learners, and anyone curious about how things work. With the right approach of bite-sized lessons, engaging review materials, and a supportive community, anyone can grasp complex concepts without feeling lost or intimidated.</p>
+                    <p>So, whether you're just starting out or looking to deepen your understanding, you're in the right place to grow—one day, one concept at a time.</p>
+                    <br/>
                     <h1>What's Here?</h1>
-                    <p>On this site, you will find links to all my videos, playlists, and resources. Additionally, you will have access to other tools like an AI study companion, review quizzes, and a means of directly contacting me for video suggestions/inquiries.</p>
-                    <p>...</p>
+                    <p>On this site, you will find the links to all my videos, playlists, and resources. Additionally, you will have access to other tools like video review quizzes, external resources, and a means of directly contacting me for video suggestions/inquiries.</p>
+                    <p>Additionally, if you wish to have one-on-one tutoring with me, feel free to set up a meeting with me by sending a message on <a href="https://schoolhouse.world/u/dheirya" target="_blank">Schoolhouse.world</a>.</p>
                     <hr/>
-                    <i>This website was designed with ❤&nbsp;&nbsp;by <a href="https://dheirya.is-a.dev" target="_blank">Dheirya Tyagi</a></i>
+                    <i>This website was designed with <span style="font-size: 0.85rem">❤</span>&nbsp;&nbsp;by <a href="https://dheirya.is-a.dev" target="_blank">Dheirya Tyagi</a></i>
                     <br/>
                     <i><small>P.S...you should check out his other projects...I heard they were pretty cool :)</small></i>
                 </div>
                 <div id="box-2">
-                    <h1>Recent Videos</h1>
+                    <h1>Our <a href="https://youtube.com/@dheirya" target="_blank">Videos</a></h1>
                     <h3><a target="_blank" href="https://www.youtube.com/playlist?list=PLwG4ajavaJ9KSrTa6czhS00Kz7DtNUdAI">The Engineering Series</a></h3>
                     <div id="carousel-1" class="main-carousel"></div>
                     <h3><a target="_blank" href="https://www.youtube.com/playlist?list=PLwG4ajavaJ9JYGO108KOpAvCPLozgPGYY">The Calculus Series</a></h3>
@@ -311,197 +101,9 @@
             </div>
         </div>
     </div>
-    <script src="https://unpkg.com/roughjs@4.6.6/bundled/rough.js"></script>
-    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
-    <script>
-        const apiKey = 'AIzaSyBmP157wx7RmjRmFhkhaKfBnoVU6D67Spo';
-        const maxResults = 25;
-        function getRandomNonZeroInt() {
-            let num = 0;
-            while (-2 <= num && num <= 2) {
-                num = Math.floor(Math.random() * 21) - 10;
-            }
-            return num;
-        }
-        function makeCarousel(id, element, time) {
-            const apiUrl = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${id}&maxResults=${maxResults}&key=${apiKey}`;
-            fetch(apiUrl).then(response => response.json())
-                .then(data => {
-                    const videos = data.items;
-                    const carouselEl = document.getElementById(element);
-                    videos.forEach(video => {
-                        if (!video.snippet || !video.snippet.resourceId || !video.snippet.resourceId.videoId || !video.snippet.thumbnails || !video.snippet.thumbnails.medium) {
-                            console.warn('Skipping video with missing data:', video);
-                            return;
-                        }
-                        const videoId = video.snippet.resourceId.videoId;
-                        const thumbnail = video.snippet.thumbnails.medium.url;
-                        const videoLink = `https://www.youtube.com/watch?v=${videoId}`;
-                        const videoElement = document.createElement('img');
-                        videoElement.className = 'carousel-cell';
-                        videoElement.onclick = () => {
-                            window.open(videoLink, '_blank');
-                        };
-                        videoElement.setAttribute('data-flickity-lazyload', thumbnail);
-                        carouselEl.appendChild(videoElement);
-                    });
-                    flickIT(element, time);
-                    const carouselCells = document.querySelectorAll('.carousel-cell');
-                    carouselCells.forEach(cell => {
-                        cell.addEventListener('mouseover', () => {
-                            if (cell.style.transform.indexOf('scale(1.06)') === -1) {
-                                cell.style.transform += ' scale(1.06)';
-                            }
-                            if (cell.style.transform.indexOf('rotate(') === -1) {
-                                cell.style.transform += ' rotate(' + getRandomNonZeroInt() + 'deg)';
-                            }
-                        });
-                        cell.addEventListener('mouseout', () => {
-                            cell.style.transform = cell.style.transform.replace('scale(1.06)', '').replace(/rotate\([-+]?\d+deg\)/, '').trim();
-                        });
-                    });
-                })
-                .catch(error => console.error('Error fetching YouTube data:', error));
-        }
-        makeCarousel('PLwG4ajavaJ9KSrTa6czhS00Kz7DtNUdAI', 'carousel-1', 7000);
-        makeCarousel('PLwG4ajavaJ9JYGO108KOpAvCPLozgPGYY', 'carousel-2', 11000);
-        makeCarousel('PLwG4ajavaJ9IU7fU7LiHL7Ycup1KKAen6', 'carousel-3', 19000);
-        makeCarousel('PLwG4ajavaJ9K68cpStVsCS6OCUEf9Mg3i', 'carousel-4', 23000);
-        function flickIT(element, time) {
-            let flkty = new Flickity('#' + element, {
-                cellAlign: 'left',
-                contain: true,
-                pageDots: false,
-                lazyLoad: 3,
-                wrapAround: true,
-                autoPlay: time
-            });
-        }
-        let canvas = document.getElementById('hero-image');
-        let width = window.innerWidth;
-        let height = window.innerHeight;
-        let margin = 75;
-        canvas.width = width;
-        canvas.height = height;
-        const rc = rough.canvas(canvas);
-        rc.line(margin, height - margin, width - (margin * 0.5), height - margin, {strokeWidth: 2, stroke: '#264653'});
-        rc.line(margin, height - margin, margin, margin, {strokeWidth: 2, stroke: '#264653'});
-        rc.line(width - (margin * 0.5), height - margin, width - margin, height - (margin * 1.5), {strokeWidth: 2, stroke: '#264653'});
-        rc.line(width - (margin * 0.5), height - margin, width - margin, height - (margin * 0.5), {strokeWidth: 2, stroke: '#264653'});
-        function generateExponentialPoints(startX, endX, startY, endY, numPoints = 100) {
-            const points = [];
-            const expBase = 4;
-            const maxExp = Math.exp(expBase) - 1;
-            for (let i = 0; i < numPoints; i++) {
-                const t = i / (numPoints - 1);
-                const rawExp = Math.exp(expBase * t) - 1;
-                const yNorm = rawExp / maxExp;
-                const x = startX + t * (endX - startX);
-                const y = startY - yNorm * (startY - endY);
-                points.push([x, y]);
-            }
-            return points;
-        }
-        const curvePoints = generateExponentialPoints(margin, width - margin, height - margin, margin, 30);
-        const shadedPoints = [...curvePoints];
-        shadedPoints.push([width - margin, height - margin]);
-        shadedPoints.push([margin, height - margin]);
-        function animateCurve(points, index = 1) {
-            if (index >= points.length) {
-                rc.line(width - margin, margin, width - (1.75 * margin), margin + (0.5 * margin), {strokeWidth: 3, stroke: '#d2b05f'});
-                rc.line(width - margin, margin, width - (0.8 * margin), margin + (0.75 * margin), {strokeWidth: 3, stroke: '#d2b05f'});
-                setTimeout(() => {
-                    changeWord();
-                }, 2000);
-                return;
-            }
-            if (index + 5 === points.length) {
-                document.getElementById('hero-text').classList.add('change');
-            }
-            rc.curve(points.slice(0, index + 1), {strokeWidth: 3, stroke: '#d2b05f'});
-            if (index > 1) {
-                const prev = points[index - 1];
-                const curr = points[index];
-                const baseY = height - margin;
-                const segment = [prev, curr, [curr[0], baseY], [prev[0], baseY]];
-                rc.polygon(segment, {fill: 'rgba(42, 157, 143, 0.3)', fillStyle: 'zigzag-line', fillWeight: 1.5, hachureGap: 4, curveFitting: 1, stroke: 'none'});
-            }
-            setTimeout(() => {
-                animateCurve(points, index + 1);
-            }, 50);
-        }
-        function reDrawScene() {
-            width = window.innerWidth;
-            height = window.innerHeight;
-            canvas.width = width;
-            canvas.height = height;
-            canvas.getContext('2d').clearRect(0, 0, width, height);
-            rc.line(margin, height - margin, width - (margin * 0.5), height - margin, {strokeWidth: 2, stroke: '#264653'});
-            rc.line(margin, height - margin, margin, margin, {strokeWidth: 2, stroke: '#264653'});
-            rc.line(width - (margin * 0.5), height - margin, width - margin, height - (margin * 1.5), {strokeWidth: 2, stroke: '#264653'});
-            rc.line(width - (margin * 0.5), height - margin, width - margin, height - (margin * 0.5), {strokeWidth: 2, stroke: '#264653'});
-            const newCurvePoints = generateExponentialPoints(margin, width - margin, height - margin, margin, 30);
-            const newShadedPoints = [...newCurvePoints];
-            newShadedPoints.push([width - margin, height - margin]);
-            newShadedPoints.push([margin, height - margin]);
-            rc.curve(newCurvePoints, {strokeWidth: 3, stroke: '#d2b05f'});
-            rc.line(width - margin, margin, width - (1.75 * margin), margin + (0.5 * margin), {strokeWidth: 3, stroke: '#d2b05f'});
-            rc.line(width - margin, margin, width - (0.8 * margin), margin + (0.75 * margin), {strokeWidth: 3, stroke: '#d2b05f'});
-            rc.polygon(newShadedPoints, {fill: 'rgba(42, 157, 143, 0.3)', fillStyle: 'zigzag-line', fillWeight: 1.5, hachureGap: 4, curveFitting: 1, stroke: 'none'});
-        }
-        let resizeTimeout;
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(() => {
-                reDrawScene();
-            }, 100);
-        });
-        const words = ['impossible', 'overwhelming', 'boring', 'confusing', 'scary', 'difficult'];
-        let current = 1;
-        function typeWord(word) {
-            document.getElementById('switch-text').textContent = '';
-            let i = 0;
-            function type() {
-                if (i < word.length) {
-                    document.getElementById('switch-text').textContent += word[i++];
-                    setTimeout(type, 120);
-                } else {
-                    if (!document.getElementById('hero-scroll').classList.contains('fade-in')) {
-                        setTimeout(() => {
-                            document.getElementById('hero-scroll').classList.add('fade-in');
-                        }, 1250);
-                    }
-                    setTimeout(() => {
-                        changeWord();
-                    }, 5000);
-                }
-            }
-            type();
-        }
-        function backspaceWord(callback) {
-            let text = document.getElementById('switch-text').textContent;
-            function erase() {
-                if (text.length > 0) {
-                    text = text.slice(0, -1);
-                    document.getElementById('switch-text').textContent = text;
-                    setTimeout(erase, 100);
-                } else if (callback) {
-                    callback();
-                }
-            }
-            erase();
-        }
-        function changeWord() {
-            backspaceWord(() => {
-                current = (current + 1) % words.length;
-                typeWord(words[current]);
-            });
-        }
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(function(){
-                animateCurve(curvePoints);
-            }, 250);
-        });
-    </script>
+    <script src="js/rough.js"></script>
+    <script src="js/flickity.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/search.js"></script>
 </body>
 </html>
