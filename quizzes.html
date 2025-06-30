@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizzes from Simple E^xplanations</title>
+    <meta name="description" content="Generate interactive review quizzes for any Simple E^xplanations YouTube video. Use AI-powered tools to reinforce STEM learning.">
+    <meta name="keywords" content="STEM quizzes, video quizzes, AI quizzes, Dheirya Tyagi, Simple Explanations, YouTube quiz generator, AP practice, SAT review, learning tools, interactive STEM, coding quizzes">
+    <meta name="author" content="Dheirya Tyagi">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta property="og:title" content=">Quizzes from Simple E^xplanations">
+    <meta property="og:description" content="Paste a video link and generate a custom quiz! Reinforce learning with AI-generated review questions for any Simple E^xplanations video.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Quizzes from Simple E^xplanations">
+    <meta name="twitter:description" content="Automatically create quizzes from YouTube videos to review STEM topics effectively. Just paste a video link and learn smarter.">
+    <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/quiz.css">
+</head>
+<body>
+    <div id="main">
+        <br/>
+        <div id="navbar">
+            <h2 style="cursor: pointer" onclick="window.open('index.html', '_self')"><i>simple <span class="hero-tan">e<sup>x</sup></span>planations</i></h2>
+            <div id="nav-links-right">
+                <a href="about.html">About</a>
+                <a href="quizzes.html">Quizzes</a>
+                <a href="resources.html">Resources</a>
+                <a href="contact.html">Contact</a>
+                <a href="https://schoolhouse.world/u/dheirya" target="_blank">Tutoring</a>
+                <a href="#" onclick="showSearchBar(event)">Search</a>
+            </div>
+        </div>
+        <div id="main-content">
+            <div id="box-1">
+                <h1 id="quizText">Review Video Quizzes</h1>
+                <div id="preQuiz">
+                    <p>To use this tool, simply find a video on the <a href="https://youtube.com/@dheirya/videos" target="_blank"><b>Simple E<sup>x</sup>planations</b></a> YouTube channel and copy the link below! We will do the rest :)</p>
+                    <p>You can automatically load a quiz by using this url pattern: <kbd><span id="siteName">https://simpleexplantions.org</span>/quizzes.html?u=VIDEO_ID</kbd></p>
+                    <script>document.getElementById("siteName").innerText = window.location.origin;</script>
+                    <form id="generate-quiz" onsubmit="generateQuiz(event)">
+                        <input maxlength="256" required type="text" id="video-url" placeholder="Paste YouTube video URL here..."/>
+                        <button type="submit"><b>Generate Quiz</b></button>
+                    </form>
+                </div>
+                <br/>
+                <small><i>Do note that this quiz is generated in realtime via an AI tool. It's designed to help you learn, but it might not be perfect—so double-check anything that seems off and let us know if you catch a mistake!</i></small>
+                <div class="footer" id="footer">
+                    <hr/>
+                    <i>This website was designed with <span style="font-size: 0.85rem">❤</span>&nbsp;&nbsp;by <a href="https://dheirya.is-a.dev" target="_blank">Dheirya Tyagi</a></i>
+                    <br/>
+                    <i><small>P.S...you should check out his other projects...I heard they were pretty cool :)</small></i>
+                </div>
+            </div>
+            <div id="box-2">
+                <h1>AI Tools</h1>
+                <p>Here are some other useful AI tools I have developed...</p>
+                <ul class="mUL">
+                    <li><a href="https://www.youtube.com/watch?v=JCzjd4akr_M" target="_blank"><b>FastLingo</b></a>: An innovative reading-based language learning site</li>
+                    <li><a href="https://www.youtube.com/watch?v=FA9hQ6gMCP0" target="_blank"><b>ThinkTales</b></a>: A story-based learning platform</li>
+                    <li><a href="https://replit.com/@dheiryat/CodeGen-An-AI-Based-Code-Generating-Site?v=1#index.html" target="_blank"><b>CodeGen</b></a>: An AI code snippet generator</li>
+                    <li><a href="https://replit.com/@dheiryat/TalkGPT-Talking-Genie-Personal-Talker?v=1#README.md" target="_blank"><b>TalkGPT</b></a>: A speech-based AI interface system</li>
+                </ul>
+                <hr/>
+                <h1 style="margin-top: 20px">Other Quizzes</h1>
+                <p>Here are some other external quizzes/question content that may be useful...</p>
+                <ul class="mUL">
+                    <li><a href="https://ocw.mit.edu" target="_blank"><b>MIT OpenCourseWare</b></a>: College-level quizzes and problem sets</li>
+                    <li><a href="https://khanacademy.org" target="_blank"><b>Khan Academy</b></a>: Interactive quizzes across many subjects</li>
+                    <li><a href="https://albert.io" target="_blank"><b>Albert.io</b></a>: Practice quizzes for AP, SAT, and more</li>
+                    <li><a href="https://satsuitequestionbank.collegeboard.org" target="_blank"><b>SAT Question Bank</b></a>: Official SAT practice quizzes</li>
+                    <li><a href="https://artofproblemsolving.com" target="_blank"><b>AoPS</b></a>: Challenging math problems and practice materials</li>
+                    <li><a href="https://www.physicsclassroom.com" target="_blank"><b>Physics Classroom</b></a>: Concept quizzes and science practice</li>
+                    <li><a href="https://tutorial.math.lamar.edu" target="_blank"><b>Paul's Online Math Notes</b></a>: Self-check math problems</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="js/quiz.js"></script>
+    <script src="js/search.js"></script>
+</body>
+</html>

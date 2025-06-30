@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Simple E^xplanations</title>
+    <meta name="description" content="Contact Dheirya Tyagi, the creator of Simple E^xplanations. Send feedback, ask questions, suggest new video topics, or collaborate on a STEM project.">
+    <meta name="keywords" content="contact STEM educator, Dheirya Tyagi, Simple Explanations contact, feedback, STEM tutoring, video suggestions, collaboration, YouTube education">
+    <meta name="author" content="Dheirya Tyagi">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta property="og:title" content="Contact Simple E^xplanations">
+    <meta property="og:description" content="Have feedback or a STEM question? Reach out to Dheirya Tyagi, the creator of Simple E^xplanations.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Contact Simple E^xplanations">
+    <meta name="twitter:description" content="Want to collaborate, give feedback, or ask a question? Get in touch with Dheirya Tyagi, founder of Simple E^xplanations.">
+    <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        #box-1 {
+            display: flex;
+            flex-direction: column;
+        }
+        #navbar {
+            margin-top: 11px;
+        }
+        #contact input, #contact textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        #contact button {
+            padding: 10px 15px;
+            background-color: #6e7187;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+        }
+        #contact button:hover {
+            background-color: #4a4e69;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <br/>
+        <div id="navbar">
+            <h2 style="cursor: pointer" onclick="window.open('index.html', '_self')"><i>simple <span class="hero-tan">e<sup>x</sup></span>planations</i></h2>
+            <div id="nav-links-right">
+                <a href="about.html">About</a>
+                <a href="quizzes.html">Quizzes</a>
+                <a href="resources.html">Resources</a>
+                <a href="contact.html">Contact</a>
+                <a href="https://schoolhouse.world/u/dheirya" target="_blank">Tutoring</a>
+                <a href="#" onclick="showSearchBar(event)">Search</a>
+            </div>
+        </div>
+        <div id="main-content">
+            <div id="box-1">
+                <h1>Contact Me!</h1>
+                <p>Got feedback on a video, noticed a bug on the site, or just curious about a topic? I’m always open to ideas, questions, and collaboration opportunities. Drop me a message!</p>
+                <form id="contact" onsubmit="sendMail(event)">
+                    <input required type="name" id="contact-name" placeholder="Your name"/>
+                    <textarea required id="contact-message" rows="10" placeholder="Type your message here..."></textarea>
+                    <input type="text" name="website" id="website" style="display: none;" autocomplete="off">
+                    <button type="submit" id="contact-submit">Send Message</button>
+                </form>
+                <div class="footer">
+                    <hr/>
+                    <i>This website was designed with <span style="font-size: 0.85rem">❤</span>&nbsp;&nbsp;by <a href="https://dheirya.is-a.dev" target="_blank">Dheirya Tyagi</a></i>
+                    <br/>
+                    <i><small>P.S...you should check out his other projects...I heard they were pretty cool :)</small></i>
+                </div>
+            </div>
+            <div id="box-2">
+                <h1>Sponsorship</h1>
+                <p>Currently, simple e<sup>x</sup>planations is not looking for any sort of fiscal sponsorship or donations.</p>
+                <p>If you'd like to support this channel, the best way is to subscribe, share the videos, and spread the word. Every new viewer helps grow this learning community!</p>
+                <p><small><i>If you do feel so inclined to, you can support my school's tech & robotics club <a href="https://bhstech.club" target="_blank">here</a>! We do need some resources there...</i></small></p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function sendMail(event) {
+            event.preventDefault();
+            const name = document.getElementById('contact-name').value;
+            const message = document.getElementById('contact-message').value;
+            const honeypot = document.getElementById('website').value;
+            if (name && message && honeypot === "") {
+                const subject = encodeURIComponent(`Message from ${name}`);
+                const body = encodeURIComponent(message);
+                const email = "simple.explanations.yt@gmail.com";
+                window.open(`mailto:${email}?subject=${subject}&body=${body}`, '_blank');
+                document.getElementById('contact').innerHTML = `<p>Thank you for your message, <b>${name}</b>! I will get back to you as soon as possible.</p>`;
+            } else {
+                alert('Please fill in all fields.');
+            }
+        }
+    </script>
+    <script src="js/search.js"></script>
+</body>
+</html>
