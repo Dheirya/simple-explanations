@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Simple Explanations</title>
@@ -28,14 +30,9 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
-    <link rel="manifest" href="favicon/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="css/common.css">
     <style>
         #box-1 {
@@ -64,13 +61,28 @@
         #navbar {
             margin-top: 11px;
         }
+        @media only screen and (max-width: 1378px) {
+            #box-1 {
+                flex: 3 !important;
+            }
+            #box-2 {
+                flex: 2 !important;
+            }
+        }
     </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
     <div id="main">
         <br/>
         <div id="navbar">
-            <h2 style="cursor: pointer" onclick="window.open('index.html', '_self')"><i>simple <span class="hero-tan">e<sup>x</sup></span>planations</i></h2>
+            <div id="navbar-top">
+                <h2 style="cursor: pointer" onclick="window.open('index.html', '_self')"><i>simple <span class="hero-tan">e<sup>x</sup></span>planations</i></h2>
+                <div id="hamburger-menu" onclick="toggleNav()">
+                    <span class="material-icons">menu</span>
+                </div>
+            </div>
             <div id="nav-links-right">
                 <a href="about.html">About</a>
                 <a href="quizzes.html">Quizzes</a>

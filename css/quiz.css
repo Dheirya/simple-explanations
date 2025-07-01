@@ -6,7 +6,7 @@
     margin-top: 11px;
 }
 form input, form textarea {
-    width: 100%;
+    width: calc(100% - 1rem);
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
@@ -102,4 +102,26 @@ form button:hover {
 }
 #box-2 {
     flex: 1 !important;
+}
+@media only screen and (max-width: 1378px) {
+    #box-1 {
+        flex: 3 !important;
+    }
+    #box-2 {
+        flex: 2 !important;
+    }
+}
+@media only screen and (max-width: 700px) {
+    .quizOptions {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .quizzes {
+        margin: 5px;
+    }
+    #answers {
+        padding: 10px 25px;
+    }
+    #answers p {
+        margin-left: -20px !important;
+    }
 }

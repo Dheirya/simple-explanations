@@ -1,10 +1,12 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Explanations</title>
-    <meta name="description" content="Simple Explanations helps students master STEM subjects through clear explanations, engaging YouTube videos, interactive quizzes, and personalized tutoring. Learn calculus, physics, engineering, and more—one concept at a time.">
+    <meta name="description" content="Simple Explanations helps students master STEM subjects through clear explanations, engaging YouTube videos, and interactive quizzes. Learn calculus, physics, engineering, and more—one concept at a time.">
     <meta name="keywords" content="STEM education, YouTube learning, calculus tutorials, physics videos, engineering concepts, student tutoring, simple explanations, Dheirya Tyagi">
     <meta name="author" content="Dheirya Tyagi">
     <meta name="robots" content="index, follow">
@@ -28,41 +30,51 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
-    <link rel="manifest" href="favicon/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
     <div id="container">
         <div id="hero">
-        <div id="hero-wrapper">
-            <div id="hero-top-text">
-                <h2 id="hero-top-p1">Learning STEM isn't <span id="switch-text">impossible</span>,</h2>
-                <h2 id="hero-top-p2">all <span id="header-you">you</span> need are...</h2>
+            <div id="hero-wrapper">
+                <div id="hero-top-text">
+                    <h2 id="hero-top-p1">Learning STEM isn't <span id="switch-text">impossible</span>,</h2>
+                    <h2 id="hero-top-p2">all <span id="header-you">you</span> need are...</h2>
+                </div>
+                <canvas id="hero-image"></canvas>
+                <div id="hero-text">
+                    <a href="https://youtube.com/@dheirya" target="_blank">
+                        <h1>simple <span class="hero-tan">e<sup>x</sup></span>planations</h1>
+                    </a>
+                    <div class="hero-quote">
+                        When we make learning simple, we make opportunity possible for everyone.
+                    </div>
+                </div>
+                <div id="hero-quote">
+                </div>
+                <div id="hero-scale-X" class="scale">
+                    <h3>knowledge</h3>
+                </div>
+                <div id="hero-scale-Y" class="scale">
+                    <h3>time</h3>
+                </div>
+                <div id="hero-scroll"></div>
             </div>
-            <canvas id="hero-image"></canvas>
-            <a id="hero-text" href="https://youtube.com/@dheirya" target="_blank">
-                <h1>simple <span class="hero-tan">e<sup>x</sup></span>planations</h1>
-            </a>
-            <div id="hero-scale-X" class="scale">
-                <h3>knowledge</h3>
-            </div>
-            <div id="hero-scale-Y" class="scale">
-                <h3>time</h3>
-            </div>
-            <div id="hero-scroll"></div>
         </div>
-    </div>
         <div id="main">
             <br/>
             <div id="navbar">
-                <h2><i>simple <span class="hero-tan">e<sup>x</sup></span>planations</i></h2>
+                <div id="navbar-top">
+                    <h2><i>simple <span class="hero-tan">e<sup>x</sup></span>planations</i></h2>
+                    <div id="hamburger-menu" onclick="toggleNav()">
+                        <span class="material-icons">menu</span>
+                    </div>
+                </div>
                 <div id="nav-links-right">
                     <a href="about.html">About</a>
                     <a href="quizzes.html">Quizzes</a>
@@ -106,8 +118,4 @@
     <script src="js/index.js"></script>
     <script src="js/search.js"></script>
 </body>
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> 7288423 (Link Remote)

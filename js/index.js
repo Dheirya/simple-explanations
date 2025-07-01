@@ -56,7 +56,7 @@ makeCarousel('PLwG4ajavaJ9JYGO108KOpAvCPLozgPGYY', 'carousel-2', 11000);
 makeCarousel('PLwG4ajavaJ9IU7fU7LiHL7Ycup1KKAen6', 'carousel-3', 19000);
 makeCarousel('PLwG4ajavaJ9K68cpStVsCS6OCUEf9Mg3i', 'carousel-4', 23000);
 function flickIT(element, time) {
-    let flkty = new Flickity('#' + element, {
+    new Flickity('#' + element, {
         cellAlign: 'left',
         contain: true,
         pageDots: false,
@@ -68,7 +68,14 @@ function flickIT(element, time) {
 let canvas = document.getElementById('hero-image');
 let width = window.innerWidth;
 let height = window.innerHeight;
-let margin = 75;
+let margin;
+if (width <= 588) {
+    margin = 25;
+} else if (width <= 896) {
+    margin = 50;
+} else {
+    margin = 75;
+}
 canvas.width = width;
 canvas.height = height;
 const rc = rough.canvas(canvas);
@@ -96,7 +103,11 @@ shadedPoints.push([width - margin, height - margin]);
 shadedPoints.push([margin, height - margin]);
 function animateCurve(points, index = 1) {
     if (index >= points.length) {
-        rc.line(width - margin, margin, width - (1.75 * margin), margin + (0.5 * margin), {strokeWidth: 3, stroke: '#d2b05f'});
+        if (width <= 896) {
+            rc.line(width - margin, margin, width - (1.6 * margin), margin + (0.5 * margin), {strokeWidth: 3, stroke: '#d2b05f'});
+        } else {
+            rc.line(width - margin, margin, width - (1.75 * margin), margin + (0.5 * margin), {strokeWidth: 3, stroke: '#d2b05f'});
+        }
         rc.line(width - margin, margin, width - (0.8 * margin), margin + (0.75 * margin), {strokeWidth: 3, stroke: '#d2b05f'});
         setTimeout(() => {
             changeWord();
@@ -121,6 +132,13 @@ function animateCurve(points, index = 1) {
 function reDrawScene() {
     width = window.innerWidth;
     height = window.innerHeight;
+    if (width <= 588) {
+        margin = 25;
+    } else if (width <= 896) {
+        margin = 50;
+    } else {
+        margin = 75;
+    }
     canvas.width = width;
     canvas.height = height;
     canvas.getContext('2d').clearRect(0, 0, width, height);
@@ -133,7 +151,11 @@ function reDrawScene() {
     newShadedPoints.push([width - margin, height - margin]);
     newShadedPoints.push([margin, height - margin]);
     rc.curve(newCurvePoints, {strokeWidth: 3, stroke: '#d2b05f'});
-    rc.line(width - margin, margin, width - (1.75 * margin), margin + (0.5 * margin), {strokeWidth: 3, stroke: '#d2b05f'});
+    if (width <= 896) {
+        rc.line(width - margin, margin, width - (1.6 * margin), margin + (0.5 * margin), {strokeWidth: 3, stroke: '#d2b05f'});
+    } else {
+        rc.line(width - margin, margin, width - (1.75 * margin), margin + (0.5 * margin), {strokeWidth: 3, stroke: '#d2b05f'});
+    }
     rc.line(width - margin, margin, width - (0.8 * margin), margin + (0.75 * margin), {strokeWidth: 3, stroke: '#d2b05f'});
     rc.polygon(newShadedPoints, {fill: 'rgba(42, 157, 143, 0.3)', fillStyle: 'zigzag-line', fillWeight: 1.5, hachureGap: 4, curveFitting: 1, stroke: 'none'});
 }

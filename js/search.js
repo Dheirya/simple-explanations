@@ -29,3 +29,13 @@ function submitSearch() {
         alert("Please enter a search term.");
     }
 }
+function toggleNav() {
+    const navLinks = document.getElementById("nav-links-right");
+    if (navLinks.style.display === "none" || navLinks.style.display === "") {
+        navLinks.style.display = "flex";
+        document.querySelector("#hamburger-menu .material-icons").innerHTML = "close";
+    } else {
+        navLinks.style.display = "none";
+        document.querySelector("#hamburger-menu .material-icons").innerHTML = "menu";
+    }
+}

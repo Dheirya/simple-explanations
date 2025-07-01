@@ -119,3 +119,69 @@ hr {
 #search-bar button:hover {
     filter: brightness(1.2);
 }
+#hamburger-menu {
+    display: none;
+    cursor: pointer;
+    margin-left: auto;
+    gap: 1.5rem;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+#hamburger-menu span {
+    font-size: 2.25rem;
+}
+@media only screen and (max-width: 1000px) {
+    #navbar {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    #navbar-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+    #nav-links-right {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        margin-bottom: 1.5rem;
+    }
+    #nav-links-right a {
+        border-bottom: 1px solid #fff;
+    }
+    #hamburger-menu {
+        display: flex;
+    }
+    #main-content {
+        flex-direction: column;
+    }
+    #box-1, #box-2 {
+        width: calc(100% - 6rem);
+        margin: 1rem 0 0 0;
+    }
+    #box-2 {
+        margin-bottom: 1rem;
+    }
+    .footer {
+        margin-top: 0.5rem;
+    }
+}
+@media only screen and (max-width: 768px) {
+    #box-1, #box-2 {
+        padding: 2rem;
+        width: calc(100% - 4rem);
+    }
+}
+@media only screen and (max-width: 428px) {
+    #navbar h2 {
+        font-size: 1.5rem;
+    }
+    #navbar {
+        width: calc(100% - 4rem);
+    }
+    #hamburger-menu span {
+        font-size: 2rem;
+    }
+}
