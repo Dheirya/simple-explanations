@@ -127,7 +127,7 @@
             if (name && message && honeypot === "") {
                 const subject = encodeURIComponent(`Message from ${name}`);
                 const body = encodeURIComponent(message);
-                const email = "simple.explanations.yt@gmail.com";
+                const email = "mail@simplexp.org";
                 window.open(`mailto:${email}?subject=${subject}&body=${body}`, '_blank');
                 document.getElementById('contact').innerHTML = `<p>Thank you for your message, <b>${name}</b>! I will get back to you as soon as possible.</p>`;
             } else {
