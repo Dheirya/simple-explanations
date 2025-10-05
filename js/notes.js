@@ -1,4 +1,4 @@
-let backendURL = "https://simplexp.koyeb.app";
+let backendURL = "https://api.simplexp.org";
 async function widthChange() {
     if (window.innerWidth < 1000) {
         const mainContent = document.getElementById("main-content");
