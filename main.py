@@ -49,7 +49,8 @@ app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 class CsrfSettings(BaseSettings):
     secret_key: str = SECRET_KEY2
-    cookie_samesite: str = "none"
+    cookie_domain: str = ".simplexp.org"
+    cookie_samesite: str = "lax"
     cookie_secure: bool = True
 
 
@@ -87,7 +88,7 @@ def get_csrf_config():
     return CsrfSettings()
 
 
-app.add_middleware(SessionMiddleware, secret_key=SECRET_KEY, https_only=True, same_site="none", max_age=3600)
+app.add_middleware(SessionMiddleware, secret_key=SECRET_KEY, https_only=True, same_site="lax", max_age=3600, domain=".simplexp.org")
 app.add_middleware(CORSMiddleware, allow_origins=ORIGINS, allow_credentials=True, allow_methods=["GET", "POST"], allow_headers=["Content-Type", "X-CSRF-Token"])
 
 
