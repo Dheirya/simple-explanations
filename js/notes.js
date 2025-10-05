@@ -195,6 +195,7 @@ async function genMainGrid() {
                 }
                 tagsDict[tag.name].push(category.id);
             });
+            console.log(tagsDict);
             const box = document.createElement("div");
             box.className = "box";
             box.innerHTML = `<span id="${category.id}" class="textBox"><h2>${category.name}</h2><i>${category.sheet_count} Note Sheets</i></span><span class="material-icons folder">folder_shared</span>`;
