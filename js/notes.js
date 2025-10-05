@@ -183,7 +183,7 @@ async function genMainGrid() {
     document.querySelector("#noteBarText").innerHTML = `<h1>Community Notes</h1>`;
     fetchData("all_categories/").then(data => {
         loading.style.display = "none";
-        tagsDict = {};
+        let tagsDict = {};
         data.forEach(category => {
             if (category.sheet_count === 0) {
                 extraCategories++;
