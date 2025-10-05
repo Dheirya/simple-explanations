@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Notes on Simple Explanations</title>
+    <meta name="description" content="Discover and contribute high-quality, student-curated study notes, review guides, and cheatsheets across subjects. Join the Simple Explanations community to enhance your learning and help others succeed.">
+    <meta name="keywords" content="study notes, review guides, cheatsheets, student resources, community learning, educational content, academic collaboration, subject notes, shared study material, Simple Explanations">
+    <meta name="author" content="Dheirya Tyagi">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/notes.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+    <div id="main">
+        <br/>
+        <div id="navbar">
+            <div id="navbar-top">
+                <h2 style="cursor: pointer" onclick="window.open('index.html', '_self')"><i>simple <span class="hero-tan">e<sup>x</sup></span>planations</i></h2>
+                <div id="hamburger-menu" onclick="toggleNav()">
+                    <span class="material-icons">menu</span>
+                </div>
+            </div>
+            <div id="nav-links-right">
+                <a href="about.html">About</a>
+                <a href="notes.html">Notes</a>
+                <a href="quizzes.html">Quizzes</a>
+                <a href="resources.html">Resources</a>
+                <a href="contact.html">Contact</a>
+                <a href="#" onclick="showSearchBar(event)">Search</a>
+            </div>
+        </div>
+        <div id="main-content">
+            <div id="box-1">
+                <div id="noteBar">
+                    <div id="noteBarText"></div>
+                    <div id="state-top-1"><select class="noteRight"><option value="All Categories">All Categories</option></select></div>
+                    <div id="state-top-2" style="display: none">
+                        <input type="text" id="searchNotesInput" placeholder="Search notes..." onkeyup="searchNotes()">
+                        <button id="state-top-2-search" onclick="searchNotes()"><span class="material-icons">search</span></button>
+                        <button class="back" onclick="changeState(1)"><span class="material-icons">home</span></button>
+                    </div>
+                    <div id="state-top-3" style="display: none">
+                        <button class="back" id="share3"><span class="material-icons">share</span></button>
+                        <button class="back" id="report3"><span class="material-icons">report</span></button>
+                        <button class="back" id="folder3"><span class="material-icons">folder</span></button>
+                        <button class="back" onclick="changeState(1)"><span class="material-icons">home</span></button>
+                    </div>
+                </div>
+                <div id="categories-grid" class="expand">
+                    <p id="loading-grid">Loading...</p>
+                    <div id="state1"></div>
+                    <div id="state2"></div>
+                    <div id="state3"><div id="pdf-viewer" style="width: 100%;"></div></div>
+                </div>
+            </div>
+            <div id="box-2">
+                <h1></h1>
+                <p></p>
+                <div id="upload_step1">
+                    <label for="file-upload" class="upload-btn">Upload Your Notes</label>
+                    <input type="file" id="file-upload" accept=".pdf" onchange="window.open('upload.html', '_blank')">
+                    <small>Only have photos? Use a free PDF scanner app like Adobe Scan or Genius Scan to convert them to a PDF first.</small>
+                </div>
+                <div id="upload_step2" style="display: none">
+                    <input maxlength="100" required type="text" id="note-title" placeholder="Title"/>
+                    <input maxlength="70" required type="text" id="note-author" placeholder="Your Name (or Anonymous)"/>
+                    <input maxlength="280" required type="text" id="note-description" placeholder="Brief Description"/>
+                    <select required id="note-category">
+                        <option value="" disabled selected>Select Folder</option>
+                    </select>
+                    <label for="note-category">Don't see a folder? Send a <a href="contact.html" target="_blank">message</a>!</label>
+                    <div data-callback="recaptchaCallback" class="g-recaptcha" data-sitekey="6LfCf9ArAAAAAEVmuJFCu2RV4-QJKorJyfVCRqtu"></div>
+                    <input disabled type="submit" class="upload-btn" value="Submit Notes" onclick="validateForm()"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <script src="js/notes.js"></script>
+    <script src="js/search.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</body>
+</html>
