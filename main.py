@@ -87,8 +87,8 @@ def get_csrf_config():
     return CsrfSettings()
 
 
-app.add_middleware(CORSMiddleware, allow_origins=ORIGINS, allow_credentials=True, allow_methods=["GET", "POST"], allow_headers=["Content-Type", "X-CSRF-Token"])
 app.add_middleware(SessionMiddleware, secret_key=SECRET_KEY, https_only=True, same_site="none", max_age=3600)
+app.add_middleware(CORSMiddleware, allow_origins=ORIGINS, allow_credentials=True, allow_methods=["GET", "POST"], allow_headers=["Content-Type", "X-CSRF-Token"])
 
 
 @app.get(f"/{ADMIN_URL}/")
@@ -198,7 +198,7 @@ async def read_category_specific(category_id: int, request: Request, db: dp_depe
 @app.get("/pdf/{pdf_id}/", response_model=SheetDetailOut)
 @limiter.limit("20/minute")
 async def read_pdf(pdf_id: int, request: Request, db: dp_dependency, csrf_protect: CsrfProtect = Depends(CsrfProtect)):
-    await verify(csrf_protect, request)
+    # await verify(csrf_protect, request)
     await verify_origin(request)
     sheet = (db.query(models.Sheet).options(selectinload(models.Sheet.category_rel).selectinload(models.Category.tags)).filter(models.Sheet.id == pdf_id).first())
     if not sheet:
