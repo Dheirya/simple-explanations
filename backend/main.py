@@ -49,6 +49,8 @@ app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 class CsrfSettings(BaseSettings):
     secret_key: str = SECRET_KEY2
+    cookie_samesite: str = "none"
+    cookie_secure: bool = True
 
 
 def sanitize_text_field(text: str, max_length: int = 280, full: bool = True) -> str:
