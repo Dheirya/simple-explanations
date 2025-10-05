@@ -87,8 +87,8 @@ def get_csrf_config():
     return CsrfSettings()
 
 
-app.add_middleware(CORSMiddleware, allow_origins=ORIGINS, allow_credentials=True, allow_methods=["GET", "POST"], allow_headers=["Content-Type", "X-CSRF-Token"])
 app.add_middleware(SessionMiddleware, secret_key=SECRET_KEY, https_only=True, same_site="none", max_age=3600)
+app.add_middleware(CORSMiddleware, allow_origins=ORIGINS, allow_credentials=True, allow_methods=["GET", "POST"], allow_headers=["Content-Type", "X-CSRF-Token"])
 
 
 @app.get(f"/{ADMIN_URL}/")
