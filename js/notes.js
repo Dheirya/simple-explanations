@@ -185,6 +185,10 @@ async function genMainGrid() {
         loading.style.display = "none";
         let tagsDict = {};
         data.forEach(category => {
+            const option = document.createElement("option");
+            option.value = category.id;
+            option.textContent = category.name;
+            document.getElementById("note-category").appendChild(option);
             if (category.sheet_count === 0) {
                 extraCategories++;
                 return;
@@ -195,16 +199,11 @@ async function genMainGrid() {
                 }
                 tagsDict[tag.name].push(category.id);
             });
-            console.log(tagsDict);
             const box = document.createElement("div");
             box.className = "box";
             box.innerHTML = `<span id="${category.id}" class="textBox"><h2>${category.name}</h2><i>${category.sheet_count} Note Sheets</i></span><span class="material-icons folder">folder_shared</span>`;
             box.onclick = () => openCategory(category.id);
             state1.appendChild(box);
-            const option = document.createElement("option");
-            option.value = category.id;
-            option.textContent = category.name;
-            document.getElementById("note-category").appendChild(option);
         });
         const sortedTags = Object.keys(tagsDict).sort((a, b) => tagsDict[b].length - tagsDict[a].length);
         const select = document.querySelector(".noteRight");
