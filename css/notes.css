@@ -1,0 +1,256 @@
+html, body {
+    height: 100%;
+}
+#main {
+    height: calc(100vh);
+    display: flex;
+    flex-direction: column;
+}
+#main-content {
+    flex: 1;
+    display: flex;
+    min-height: 0;
+}
+#box-1 {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+#navbar {
+    margin-top: 11px;
+}
+#box-1 {
+    padding: 0;
+    border-radius: 0;
+    background: none;
+    width: 100% !important;
+}
+#state1, #state2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 12.5px;
+}
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    background-color: #e9c89d;
+    cursor: pointer;
+    transition: 0.2s ease;
+    max-width: 100%;
+}
+.box:hover:not(#extraCategoriesBox) {
+    transform: scale(1.02);
+    background-color: #c1aa8b;
+}
+.folder {
+    font-size: 48px !important;
+    margin-left: 25px;
+}
+.textBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+    flex: 1;
+}
+.textBox h2 {
+    margin: 0;
+    padding: 0;
+    font-size: 1.4em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.textBox i {
+    font-size: 1.05em;
+    color: #555;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+#noteBar {
+    background-color: #e9c89d;
+    padding: 1rem;
+    margin: 0 0 12.5px 0;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.noteRight {
+    padding: 5px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #eddaba;
+    transition: background-color 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+#noteBar span p {
+    margin: 0;
+}
+.noteRight:hover {
+    background-color: #d5c4a7;
+}
+.expand {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)) !important;
+}
+#state-top-2, #state-top-3 {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    overflow: hidden;
+    width: fit-content;
+}
+#searchNotesInput {
+    border: none;
+    padding: 11.5px 12px;
+    outline: none;
+    font-size: 17px;
+    border-radius: 4px 0 0 4px !important;
+    font-family: 'Montserrat', sans-serif;
+}
+#state-top-2 button, #state-top-3 button {
+    background-color: #eddaba;
+    border: none;
+    padding: 10px 9px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+#state-top-2 button:hover, #state-top-3 button:hover {
+    background-color: #d5c4a7;
+}
+.back {
+    border-radius: 4px;
+    margin-left: 8px;
+}
+#state3 {
+    height: 100%;
+    display: none;
+}
+#categories-grid {
+    flex: 1;
+    min-height: 0;
+}
+#pdf-viewer {
+    height: 100% !important;
+    display: none;
+    width: 100%;
+    overflow: hidden !important;
+}
+embedpdf-container {
+    border-radius: 10px !important;
+    max-height: 100% !important;
+}
+#file-upload {
+    display: none;
+}
+.upload-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    border: 2px solid #555;
+    padding: 14px 0;
+    font-size: 16px;
+    font-weight: bolder;
+    background-color: #e9c89d;
+    color: #333;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 20px;
+}
+.upload-btn:hover {
+    background-color: #d5b27d;
+}
+.upload-btn[disabled] {
+    background-color: #f0e1d4;
+    color: #dc3545;
+    border-color: #dc3545;
+    cursor: not-allowed;
+}
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+#upload_step2 input[type="text"], #upload_step2 select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+}
+div.g-recaptcha {
+    margin-bottom: 10px;
+    float: right;
+}
+label[for="note-category"] {
+    font-size: 14px;
+    margin: -5px 0 7.5px 0;
+    display: block;
+    color: #555;
+}
+label[for="note-category"] a {
+    color: #333;
+    text-decoration: underline;
+}
+@media only screen and (max-width: 1378px) {
+    #box-1 {
+        flex: 5 !important;
+    }
+    #box-2 {
+        flex: 2 !important;
+    }
+    #state-top-2 {
+        margin-top: 5px;
+        width: 100%;
+    }
+    #searchNotesInput {
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 1000px) {
+    #main-content {flex-direction: column; min-height: initial;}
+    div.g-recaptcha {
+        margin-top: -20px;
+    }
+    embedpdf-container {
+        height: 75vh !important;
+    }
+}
+@media only screen and (max-width: 638px) {
+    div.g-recaptcha {
+        margin-top: 0;
+        float: left;
+    }
+}
+@media only screen and (max-width: 768px) {
+    #box-1 {overflow: hidden;}
+}
+#extraCategoriesBox {
+    cursor: default !important;
+}
+#extraCategoriesBox span i {
+    color: #363f47 !important;
+    cursor: text !important;
+}
+.back, #state-top-2-search span, option {
+    color: #333 !important;
+}
