@@ -140,7 +140,7 @@ async def verify_recaptcha(token: str) -> bool:
 @app.exception_handler(CsrfProtectError)
 def csrf_protect_exception_handler(request: Request, exc: CsrfProtectError):
     return JSONResponse(status_code=exc.status_code, content={'detail': exc.message})
-    
+
 
 @app.get("/csrf")
 async def get_csrf_token(request: Request, response: Response, csrf_protect: CsrfProtect = Depends()):
@@ -198,7 +198,7 @@ async def read_category_specific(category_id: int, request: Request, db: dp_depe
 
 @app.get("/pdf/{pdf_id}/", response_model=SheetDetailOut)
 @limiter.limit("20/minute")
-async def read_pdf(pdf_id: int, request: Request, db: dp_dependency, csrf_protect: CsrfProtect = Depends(CsrfProtect)):
+async def read_pdf(pdf_id: int, viewed: bool, request: Request, db: dp_dependency, csrf_protect: CsrfProtect = Depends(CsrfProtect)):
     await verify(csrf_protect, request)
     await verify_origin(request)
     sheet = (db.query(models.Sheet).options(selectinload(models.Sheet.category_rel).selectinload(models.Category.tags)).filter(models.Sheet.id == pdf_id).first())
@@ -206,8 +206,9 @@ async def read_pdf(pdf_id: int, request: Request, db: dp_dependency, csrf_protec
         raise HTTPException(status_code=404, detail="Sheet not found")
     if not sheet.approved:
         raise HTTPException(status_code=403, detail="Sheet not approved")
-    db.execute(update(models.Sheet).where(models.Sheet.id == pdf_id).values(views=models.Sheet.views + 1))
-    db.commit()
+    if not viewed:
+        db.execute(update(models.Sheet).where(models.Sheet.id == pdf_id).values(views=models.Sheet.views + 1))
+        db.commit()
     return SheetDetailOut.from_orm(sheet)
 
 
