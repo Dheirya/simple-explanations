@@ -5,8 +5,9 @@ function hasViewedSheet(pdfId) {
 }
 function markSheetAsViewed(pdfId) {
     const viewedSheets = JSON.parse(localStorage.getItem('viewedSheets') || '[]');
-    if (!viewedSheets.includes(pdfId)) {
-        viewedSheets.push(pdfId);
+    const idStr = String(pdfId);
+    if (!viewedSheets.includes(idStr)) {
+        viewedSheets.push(idStr);
         localStorage.setItem('viewedSheets', JSON.stringify(viewedSheets));
     }
 }
