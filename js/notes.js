@@ -1,4 +1,15 @@
 let backendURL = "https://api.simplexp.org";
+function hasViewedSheet(pdfId) {
+    const viewedSheets = JSON.parse(localStorage.getItem('viewedSheets') || '[]');
+    return viewedSheets.includes(pdfId);
+}
+function markSheetAsViewed(pdfId) {
+    const viewedSheets = JSON.parse(localStorage.getItem('viewedSheets') || '[]');
+    if (!viewedSheets.includes(pdfId)) {
+        viewedSheets.push(pdfId);
+        localStorage.setItem('viewedSheets', JSON.stringify(viewedSheets));
+    }
+}
 async function widthChange() {
     if (window.innerWidth < 1000) {
         const mainContent = document.getElementById("main-content");
@@ -317,7 +328,9 @@ async function openPDF(pdfId) {
     topstate1.style.display = "none";
     topstate2.style.display = "none";
     topstate3.style.display = "flex";
-    fetchData("pdf/" + pdfId + "/").then(async data => {
+    const isViewed = hasViewedSheet(pdfId);
+    fetchData(`pdf/${pdfId}/?viewed=${isViewed}`).then(async data => {
+        markSheetAsViewed(pdfId);
         history.pushState({pdfId: pdfId}, "", `notes.html?pdf=${pdfId}`);
         document.title = `${data.title} Note Sheet on Simple Explanations`;
         document.querySelector('meta[name="description"]').setAttribute("content", `View "${data.title}"—a shared note sheet by ${data.author} in the ${data.category_name} folder on Simple Explanations. Learn efficiently with concise and accurate notes.`);
