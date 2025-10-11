@@ -142,6 +142,12 @@ def csrf_protect_exception_handler(request: Request, exc: CsrfProtectError):
     return JSONResponse(status_code=exc.status_code, content={'detail': exc.message})
 
 
+@app.get("/testIP/")
+async def test_ip(request: Request):
+    ip = get_remote_address(request)
+    return {"ip": ip}
+    
+
 @app.get("/csrf")
 async def get_csrf_token(request: Request, response: Response, csrf_protect: CsrfProtect = Depends()):
     await verify_origin(request)
