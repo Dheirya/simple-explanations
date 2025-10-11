@@ -52,18 +52,20 @@ class TagView(ModelView, model=models.Tag):
     column_list = [models.Tag.id, models.Tag.name, models.Tag.categories]
     column_searchable_list = [models.Tag.name]
     form_columns = [models.Tag.name]
+    page_size = 50
 
 
 class CategoryView(ModelView, model=models.Category):
     column_list = [models.Category.id, models.Category.name, models.Category.description, models.Category.sheets, models.Category.tags]
     column_searchable_list = [models.Category.name, models.Category.description]
     form_columns = [models.Category.name, models.Category.description, models.Category.tags]
+    page_size = 50
 
 
 class SheetView(ModelView, model=models.Sheet):
     column_list = [models.Sheet.id, models.Sheet.approved, models.Sheet.views, models.Sheet.url, models.Sheet.uploaded_date, models.Sheet.category_rel, models.Sheet.author, models.Sheet.title, models.Sheet.description]
     column_searchable_list = [models.Sheet.title, models.Sheet.author, models.Sheet.description, models.Sheet.url]
-    form_columns = [models.Sheet.title, models.Sheet.description, models.Sheet.author, models.Sheet.url, models.Sheet.category_rel, models.Sheet.views]
+    form_columns = [models.Sheet.title, models.Sheet.description, models.Sheet.author, models.Sheet.url, models.Sheet.category_rel, models.Sheet.category_id, models.Sheet.views, models.Sheet.approved]
     can_delete = False
     column_default_sort = (models.Sheet.id, True)
     page_size = 50
