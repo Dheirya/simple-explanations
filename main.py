@@ -41,7 +41,7 @@ EMAIL_PASSWORD = os.environ.get("EMAIL_PASSWORD")
 MAX_FILE_SIZE = 10 * 1024 * 1024
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
-limiter = Limiter(key_func=get_remote_address, default_limits=["20/second", "100/minute", "1000/hour"])  # MAKE SURE THIS WORKS OVER CROSS SITE REQUESTS VIA FETCH
+limiter = Limiter(key_func=get_remote_address, default_limits=["20/second", "100/minute", "1000/hour"])
 app = FastAPI(redoc_url=None, docs_url=None, title="Simple Explanations API", description="API for Simple Explanations project", version="1.0.0")
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
@@ -140,12 +140,6 @@ async def verify_recaptcha(token: str) -> bool:
 @app.exception_handler(CsrfProtectError)
 def csrf_protect_exception_handler(request: Request, exc: CsrfProtectError):
     return JSONResponse(status_code=exc.status_code, content={'detail': exc.message})
-
-
-@app.get("/testIP/")
-async def test_ip(request: Request):
-    ip = get_remote_address(request)
-    return {"ip": ip}
     
 
 @app.get("/csrf")
