@@ -41,7 +41,7 @@ EMAIL_PASSWORD = os.environ.get("EMAIL_PASSWORD")
 MAX_FILE_SIZE = 10 * 1024 * 1024
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
-limiter = Limiter(key_func=get_remote_address, default_limits=["20/second", "100/minute", "1000/hour"])  # MAKE SURE THIS WORKS OVER CROSS SITE REQUESTS VIA FETCH
+limiter = Limiter(key_func=get_remote_address, default_limits=["20/second", "100/minute", "1000/hour"])
 app = FastAPI(redoc_url=None, docs_url=None, title="Simple Explanations API", description="API for Simple Explanations project", version="1.0.0")
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
@@ -198,7 +198,7 @@ async def read_category_specific(category_id: int, request: Request, db: dp_depe
 
 @app.get("/pdf/{pdf_id}/", response_model=SheetDetailOut)
 @limiter.limit("20/minute")
-async def read_pdf(pdf_id: int, request: Request, db: dp_dependency, csrf_protect: CsrfProtect = Depends(CsrfProtect)):
+async def read_pdf(pdf_id: int, viewed: bool, request: Request, db: dp_dependency, csrf_protect: CsrfProtect = Depends(CsrfProtect)):
     await verify(csrf_protect, request)
     await verify_origin(request)
     sheet = (db.query(models.Sheet).options(selectinload(models.Sheet.category_rel).selectinload(models.Category.tags)).filter(models.Sheet.id == pdf_id).first())
@@ -206,8 +206,9 @@ async def read_pdf(pdf_id: int, request: Request, db: dp_dependency, csrf_protec
         raise HTTPException(status_code=404, detail="Sheet not found")
     if not sheet.approved:
         raise HTTPException(status_code=403, detail="Sheet not approved")
-    db.execute(update(models.Sheet).where(models.Sheet.id == pdf_id).values(views=models.Sheet.views + 1))
-    db.commit()
+    if not viewed:
+        db.execute(update(models.Sheet).where(models.Sheet.id == pdf_id).values(views=models.Sheet.views + 1))
+        db.commit()
     return SheetDetailOut.from_orm(sheet)
 
 
