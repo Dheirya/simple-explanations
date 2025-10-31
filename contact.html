@@ -70,6 +70,9 @@
                 flex: 2 !important;
             }
         }
+        div.g-recaptcha {
+            margin-bottom: 7.5px;
+        }
     </style>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -86,21 +89,22 @@
             </div>
             <div id="nav-links-right">
                 <a href="about.html">About</a>
+                <a href="notes.html">Notes</a>
                 <a href="quizzes.html">Quizzes</a>
                 <a href="resources.html">Resources</a>
                 <a href="contact.html">Contact</a>
-                <a href="https://schoolhouse.world/u/dheirya" target="_blank">Tutoring</a>
                 <a href="#" onclick="showSearchBar(event)">Search</a>
             </div>
         </div>
         <div id="main-content">
             <div id="box-1">
-                <h1>Contact Me!</h1>
-                <p>Got feedback on a video, noticed a bug on the site, or just curious about a topic? I’m always open to ideas, questions, and collaboration opportunities. Drop me a message!</p>
+                <h1>Contact Us!</h1>
+                <p id="textMessage">Got feedback on a video, noticed a bug on the site, or just curious about a topic? I’m always open to ideas, questions, and collaboration opportunities. Drop a message!</p>
                 <form id="contact" onsubmit="sendMail(event)">
-                    <input required type="name" id="contact-name" placeholder="Your name"/>
-                    <textarea required id="contact-message" rows="10" placeholder="Type your message here..."></textarea>
-                    <input type="text" name="website" id="website" style="display: none;" autocomplete="off">
+                    <input maxlength="256" required type="email" id="contact-email" placeholder="Your email..."/>
+                    <textarea maxlength="1000" required id="contact-message" rows="10" placeholder="Type your message here..."></textarea>
+                    <input type="text" name="name" id="contact-name" style="display: none;" autocomplete="off">
+                    <div class="g-recaptcha" data-sitekey="6LfCf9ArAAAAAEVmuJFCu2RV4-QJKorJyfVCRqtu"></div>
                     <button type="submit" id="contact-submit">Send Message</button>
                 </form>
                 <div class="footer">
@@ -113,28 +117,13 @@
             <div id="box-2">
                 <h1>Sponsorship</h1>
                 <p>Currently, simple e<sup>x</sup>planations is not looking for any sort of fiscal sponsorship or donations.</p>
-                <p>If you'd like to support this channel, the best way is to subscribe, share the videos, and spread the word. Every new viewer helps grow this learning community!</p>
+                <p>If you'd like to support this channel, the best way is to subscribe/follow, share the videos, and spread the word. Every new viewer helps grow this learning community!</p>
                 <p><small><i>If you do feel so inclined to, you can support my school's tech & robotics club <a href="https://bhstech.club" target="_blank">here</a>! We do need some resources there...</i></small></p>
             </div>
         </div>
     </div>
-    <script>
-        function sendMail(event) {
-            event.preventDefault();
-            const name = document.getElementById('contact-name').value;
-            const message = document.getElementById('contact-message').value;
-            const honeypot = document.getElementById('website').value;
-            if (name && message && honeypot === "") {
-                const subject = encodeURIComponent(`Message from ${name}`);
-                const body = encodeURIComponent(message);
-                const email = "mail@simplexp.org";
-                window.open(`mailto:${email}?subject=${subject}&body=${body}`, '_blank');
-                document.getElementById('contact').innerHTML = `<p>Thank you for your message, <b>${name}</b>! I will get back to you as soon as possible.</p>`;
-            } else {
-                alert('Please fill in all fields.');
-            }
-        }
-    </script>
+    <script src="js/contact.js"></script>
     <script src="js/search.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 </html>
