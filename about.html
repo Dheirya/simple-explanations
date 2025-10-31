@@ -85,22 +85,22 @@
             </div>
             <div id="nav-links-right">
                 <a href="about.html">About</a>
+                <a href="notes.html">Notes</a>
                 <a href="quizzes.html">Quizzes</a>
                 <a href="resources.html">Resources</a>
                 <a href="contact.html">Contact</a>
-                <a href="https://schoolhouse.world/u/dheirya" target="_blank">Tutoring</a>
                 <a href="#" onclick="showSearchBar(event)">Search</a>
             </div>
         </div>
         <div id="main-content">
             <div id="box-1">
                 <h1>About</h1>
-                <p>Hi, I'm Dheirya! I created this YouTube channel and website to share my love for STEM in a fun and accessible way. I run everything myself—from scripting and planning the videos to designing and programming the materials on this website. If you find any mistakes in any of my content, please let me know so I can fix them!</p>
+                <p>Hi, I'm Dheirya Tyagi! I created this initiative to share my love for STEM in a fun and accessible way. I run everything myself: from scripting and planning the videos to designing and programming the materials on this website. If you find any mistakes in any of my content, please let me know so I can fix them!</p>
                 <br/>
                 <h1>Mission Statement</h1>
                 <p><b>Imagine learning one new thing every day.</b> Doesn't seem like a lot, right? But imagine if you could do that every day for a year, or even longer. You'd have accumulated a wealth of knowledge, and the best part is, it doesn't have to be overwhelming.</p>
-                <p>My mission with this website and YouTube channel is to make learning STEM education clear, fun, and approachable—especially for students, self-learners, and anyone curious about how things work. With the right approach of bite-sized lessons, engaging review materials, and a supportive community, anyone can grasp complex concepts without feeling lost or intimidated.</p>
-                <p>So, whether you're just starting out or looking to deepen your understanding, you're in the right place to grow—one day, one concept at a time.</p>
+                <p>My mission with this website, <b><a href="https://youtube.com/@dheirya" target="_blank" style="color: #1e2a34">YouTube</a></b>, and <b><a style="color: #1e2a34" href="https://tiktok.com/@simple.explanations" target="_blank">TikTok</a></b> is to make STEM education clear, fun, and approachable—especially for students, self-learners, and anyone curious about how things work. With the right approach of bite-sized lessons, engaging review materials, and a supportive community, anyone can grasp complex concepts without feeling lost or intimidated.</p>
+                <p>So, whether you're just starting out or looking to deepen your understanding, you're in the right place to grow. One day, one concept at a time.</p>
                 <div class="footer">
                     <hr/>
                     <i>This website was designed with <span style="font-size: 0.85rem">❤</span>&nbsp;&nbsp;by <a href="https://dheirya.is-a.dev" target="_blank">Dheirya Tyagi</a></i>
@@ -116,32 +116,35 @@
         </div>
     </div>
     <script>
-        const apiURL = "https://www.googleapis.com/youtube/v3/channels?part=statistics&id=UCDRExScvxFo57wMpXudTHjA&key=AIzaSyBmP157wx7RmjRmFhkhaKfBnoVU6D67Spo";
-        fetch(apiURL)
-            .then(response => response.json())
-            .then(data => {
-                const stats = data.items[0].statistics;
-                document.getElementById("box-2").innerHTML += `
-                    <div class="youtube-stats">
-                        <div class="youtube-section">
-                            <span class="material-icons">diversity_1</span>
-                            ${stats.subscriberCount}
-                            <div class="youtube-label">subscribers</div>
-                        </div>
-                        <div class="youtube-section">
-                            <span class="material-icons">group</span>
-                            ${stats.viewCount}
-                            <div class="youtube-label">views</div>
-                        </div>
-                        <div class="youtube-section">
-                            <span class="material-icons">video_library</span>
-                            ${stats.videoCount}
-                            <div class="youtube-label">videos</div>
-                        </div>
+        const youtubeAPI = "https://www.googleapis.com/youtube/v3/channels?part=statistics&id=UCDRExScvxFo57wMpXudTHjA&key=AIzaSyBmP157wx7RmjRmFhkhaKfBnoVU6D67Spo";
+        const sheetURL = "https://docs.google.com/spreadsheets/d/1QMxd2qEVsn_74jvpWZsQj0C6S0oI0hRECM3h1T0S--w/gviz/tq?tqx=out:csv";
+        Promise.all([fetch(youtubeAPI).then(res => res.json()), fetch(sheetURL).then(res => res.text())]).then(([ytData, sheetCSV]) => {
+            const stats = ytData.items[0].statistics;
+            const rows = sheetCSV.trim().split("\n");
+            const [a1, b1, c1] = rows[0].split(",").map(val => parseInt(val.replace(/"/g, '').trim()) || 0);
+            const totalSubs = parseInt(stats.subscriberCount) + a1;
+            const totalViews = parseInt(stats.viewCount) + b1;
+            const totalVideos = parseInt(stats.videoCount) + c1;
+            document.getElementById("box-2").innerHTML += `
+                <div class="youtube-stats">
+                    <div class="youtube-section">
+                        <span class="material-icons">diversity_1</span>
+                        ${totalSubs.toLocaleString()}
+                        <div class="youtube-label">follows/subs</div>
                     </div>
-                `;
-            })
-            .catch(error => console.error('Error fetching YouTube statistics:', error));
+                    <div class="youtube-section">
+                        <span class="material-icons">group</span>
+                        ${totalViews.toLocaleString()}
+                        <div class="youtube-label">total views</div>
+                    </div>
+                    <div class="youtube-section">
+                        <span class="material-icons">video_library</span>
+                        ${totalVideos.toLocaleString()}
+                        <div class="youtube-label">total videos</div>
+                    </div>
+                </div>
+            `;
+        }).catch(err => console.error("Error fetching data:", err));
     </script>
     <script src="js/search.js"></script>
 </body>
