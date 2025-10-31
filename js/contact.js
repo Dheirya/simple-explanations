@@ -1,5 +1,5 @@
 let params = new URLSearchParams(window.location.search);
-let backendURL = "https://simplexp.koyeb.app";
+let backendURL = "https://api.simplexp.org";
 if (params.has('report_pdf')) {
     let report_pdf = params.get('report_pdf');
     document.getElementById("contact-message").value = `I wanted to report that the PDF for the following video is broken, missing, incorrect or something else: PDF #${report_pdf}\n\nExplanation (please describe the issue in detail): `;
