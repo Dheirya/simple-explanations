@@ -1,7 +1,7 @@
 let backendURL = "https://api.simplexp.org";
 function hasViewedSheet(pdfId) {
     const viewedSheets = JSON.parse(localStorage.getItem('viewedSheets') || '[]');
-    return viewedSheets.includes(pdfId);
+    return viewedSheets.includes(String(pdfId));
 }
 function markSheetAsViewed(pdfId) {
     const viewedSheets = JSON.parse(localStorage.getItem('viewedSheets') || '[]');
