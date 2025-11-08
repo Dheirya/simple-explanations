@@ -123,7 +123,8 @@
             console.log("STATS: " + stats);
             const rows = sheetCSV.trim().split("\n");
             console.log("ROWS: " + rows);
-            const [a1, b1, c1] = rows[0].split(",").map(val => parseInt(val.replace(/"/g, '').trim()) || 0);
+            const match = rows[0].match(/"([^"]*)"/g);
+            const [a1, b1, c1] = match.map(v => parseInt(v.replace(/"|,/g, "").trim()) || 0);
             console.log("A1: " + a1);
             console.log("B1: " + b1);
             console.log("C1: " + c1);
