@@ -341,8 +341,8 @@ async function openPDF(pdfId) {
     topstate2.style.display = "none";
     topstate3.style.display = "flex";
     const isViewed = hasViewedSheet(pdfId);
+    markSheetAsViewed(pdfId);
     fetchData(`pdf/${pdfId}/?viewed=${isViewed}`).then(async data => {
-        markSheetAsViewed(pdfId);
         history.pushState({pdfId: pdfId}, "", `notes.html?pdf=${pdfId}`);
         document.title = `${data.title} Note Sheet on Simple Explanations`;
         document.querySelector('meta[name="description"]').setAttribute("content", `View "${data.title}"—a shared note sheet by ${data.author} in the ${data.category_name} folder on Simple Explanations. Learn efficiently with concise and accurate notes.`);
