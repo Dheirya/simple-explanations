@@ -68,6 +68,16 @@ document.getElementById('file-upload').addEventListener('change', function() {
         this.value = "";
     } else {
         formData.append("file", file);
+        if (Object.keys(tagsDict).length === 0) {
+            fetchData("all_categories/").then(data => {
+                data.forEach(category => {
+                    const option = document.createElement("option");
+                    option.value = category.id;
+                    option.textContent = category.name;
+                    document.getElementById("note-category").appendChild(option);
+                });
+            });
+        }
         document.querySelector("#box-2 h1").innerHTML = "Provide Details";
         document.querySelector("#box-2 p").innerHTML = "You selected: <b>" + file.name + "</b> (" + (file.size / 1024).toFixed(2) + " KB)";
         document.getElementById("upload_step1").remove();
