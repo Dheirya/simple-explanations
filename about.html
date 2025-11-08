@@ -120,14 +120,9 @@
         const sheetURL = "https://docs.google.com/spreadsheets/d/1QMxd2qEVsn_74jvpWZsQj0C6S0oI0hRECM3h1T0S--w/gviz/tq?tqx=out:csv";
         Promise.all([fetch(youtubeAPI).then(res => res.json()), fetch(sheetURL).then(res => res.text())]).then(([ytData, sheetCSV]) => {
             const stats = ytData.items[0].statistics;
-            console.log("STATS: " + stats);
             const rows = sheetCSV.trim().split("\n");
-            console.log("ROWS: " + rows);
             const match = rows[0].match(/"([^"]*)"/g);
             const [a1, b1, c1] = match.map(v => parseInt(v.replace(/"|,/g, "").trim()) || 0);
-            console.log("A1: " + a1);
-            console.log("B1: " + b1);
-            console.log("C1: " + c1);
             const totalSubs = parseInt(stats.subscriberCount) + a1;
             const totalViews = parseInt(stats.viewCount) + b1;
             const totalVideos = parseInt(stats.videoCount) + c1;
