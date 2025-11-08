@@ -190,12 +190,13 @@ async function share(shareText) {
 async function report(pdfId) {
     window.open(`contact.html?report_pdf=${pdfId}`, "_blank");
 }
+let tagsDict = {};
 async function genMainGrid() {
     tagParam = new URLSearchParams(window.location.search);
     document.querySelector("#noteBarText").innerHTML = `<h1>Community Notes</h1>`;
     fetchData("all_categories/").then(data => {
         loading.style.display = "none";
-        let tagsDict = {};
+        tagsDict = {};
         data.forEach(category => {
             const option = document.createElement("option");
             option.value = category.id;
