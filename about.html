@@ -121,7 +121,7 @@
         Promise.all([fetch(youtubeAPI).then(res => res.json()), fetch(sheetURL).then(res => res.text())]).then(([ytData, sheetCSV]) => {
             const stats = ytData.items[0].statistics;
             const rows = sheetCSV.trim().split("\n");
-            const [a1, b1, c1] = rows[0].split(",").map(val => parseInt(val.replace(/"/g, '').trim()) || 0);
+            const [a1, b1, c1] = rows[0].replace(/,/g, "").split(" ").map(val => parseInt(val.replace(/"/g, '').trim()) || 0);
             const totalSubs = parseInt(stats.subscriberCount) + a1;
             const totalViews = parseInt(stats.viewCount) + b1;
             const totalVideos = parseInt(stats.videoCount) + c1;
