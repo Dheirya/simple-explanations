@@ -254,6 +254,9 @@ label[for="note-category"] a {
     embedpdf-container {
         height: 75vh !important;
     }
+    #box-2 {
+        flex: 0 !important;
+    }
 }
 @media only screen and (max-width: 638px) {
     div.g-recaptcha {
@@ -262,7 +265,9 @@ label[for="note-category"] a {
     }
 }
 @media only screen and (max-width: 768px) {
-    #box-1 {overflow: hidden;}
+    #box-1 {
+        overflow: visible;
+    }
 }
 #extraCategoriesBox {
     cursor: default !important;
