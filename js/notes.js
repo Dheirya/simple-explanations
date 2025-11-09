@@ -131,7 +131,7 @@ async function submitForm() {
         const result = await response.json();
         if (response.ok) {
             document.querySelector("#box-2 h1").innerHTML = "Upload Successful!";
-            document.querySelector("#box-2 p").innerHTML = `Thank you, ${result.author}! Your note sheet titled "${result.title}" has been uploaded successfully. We appreciate your contribution, and <b>after verifying the content</b>, we will make it available on our site. If you have any questions about the verification process, feel free to <a href="contact.html">contact us</a>.`;
+            document.querySelector("#box-2 p").innerHTML = `Thank you, ${result.author}! Your note sheet titled "${result.title}" has been uploaded successfully. We appreciate your contribution, and <b>after verifying the content</b>, we will make it available on our site. If you have any questions about the verification process, feel free to <a href="contact.html">contact us</a>.<br>Want to upload another? Click <a href="notes.html">here</a> to return to the upload page.`;
             celebrateConfetti();
         } else {
             console.log("Error response:", result.detail || result.error);
