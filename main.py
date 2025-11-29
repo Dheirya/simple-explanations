@@ -38,6 +38,7 @@ SECRET_KEY2 = os.environ.get("SECRET_KEY2")
 ADMIN_URL = os.environ.get("ADMIN_URL")
 RECAPTCHA_SECRET_KEY = os.environ.get("RECAPTCHA_SECRET_KEY")
 EMAIL_PASSWORD = os.environ.get("EMAIL_PASSWORD")
+AI_KEY = os.environ.get("HACKCLUB_AI_KEY")
 MAX_FILE_SIZE = 10 * 1024 * 1024
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
@@ -274,3 +275,26 @@ async def upload_sheet(request: Request, db: dp_dependency, title: str = Form(..
         db.commit()
         db.refresh(db_sheet)
     return db_sheet
+
+
+@app.post("/ai/")
+@limiter.limit("10/minute")
+async def ai_chat(request: Request, csrf_protect: CsrfProtect = Depends(CsrfProtect)):
+    await verify(csrf_protect, request)
+    await verify_origin(request)
+    try:
+        body = await request.json()
+    except:
+        raise HTTPException(status_code=400, detail="Invalid JSON body")
+    messages = body.get("messages")
+    if not messages:
+        raise HTTPException(status_code=400, detail="Missing `messages`")
+    url = "https://ai.hackclub.com/proxy/v1/chat/completions"
+    headers = {"Authorization": f"Bearer {AI_KEY}", "Content-Type": "application/json"}
+    payload = {"model": "openai/gpt-5-mini", "messages": messages}
+    try:
+        async with httpx.AsyncClient(timeout=30) as client:
+            r = await client.post(url, headers=headers, json=payload)
+            return r.json()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"AI request failed: {e!s}")
