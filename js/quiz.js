@@ -12,7 +12,9 @@ function extractJsonString(rawText) {
         }
     return rawText.substring(firstIndex, lastIndex + 1);
 }
-function aiQuiz(title, videoUrl) {
+async function aiQuiz(title, videoUrl) {
+    const csrfReq = await fetch("https://api.simplexp.org/csrf", {credentials: "include"});
+    const { csrf_token } = await csrfReq.json();
     const prompt = `
         You're an AI quiz generator for YouTube STEM content. A video titled "${title}" was just watched.
         Generate a short multiple-choice quiz with 8 questions to test the viewer's understanding. Each question must include:
@@ -37,28 +39,20 @@ function aiQuiz(title, videoUrl) {
           ]
         }
     `.trim();
-    return fetch("https://ai.hackclub.com/chat/completions", {
+    const response = await fetch("https://api.simplexp.org/ai/", {
         method: "POST",
+        credentials: "include",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "X-CSRF-Token": csrf_token
         },
         body: JSON.stringify({
-            messages: [
-                {
-                    role: "user",
-                    content: prompt
-                }
-            ]
+            messages: [{ role: "user", content: prompt }]
         })
-    })
-    .then(response => response.json())
-    .then(data => {
-        return extractJsonString(data.choices?.[0]?.message?.content) || "No quiz generated.";
-    })
-    .catch(error => {
-        console.error("Error generating quiz:", error);
-        return "An error occurred while generating the quiz. Please try again later.";
     });
+    const data = await response.json();
+    const text = data?.choices?.[0]?.message?.content;
+    return extractJsonString(text) || "No quiz generated.";
 }
 function extractYouTubeID(url) {
     const regex = /(?:youtube\.com\/(?:.*v=|v\/|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
