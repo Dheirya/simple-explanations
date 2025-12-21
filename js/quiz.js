@@ -17,7 +17,7 @@ async function aiQuiz(title, videoUrl) {
     const { csrf_token } = await csrfReq.json();
     const prompt = `
         You're an AI quiz generator for YouTube STEM content. A video titled "${title}" was just watched.
-        Generate a short multiple-choice quiz with 8 questions to test the viewer's understanding. Each question must include:
+        Generate a short multiple-choice quiz with 5 questions to test the viewer's understanding. Each question must include:
         - A clear and concise question
         - Four answer choices labeled A, B, C, and D
         - One correct answer specified as a letter ("A", "B", "C", or "D")
