@@ -118,6 +118,18 @@
     <script>
         const youtubeAPI = "https://www.googleapis.com/youtube/v3/channels?part=statistics&id=UCDRExScvxFo57wMpXudTHjA&key=AIzaSyBmP157wx7RmjRmFhkhaKfBnoVU6D67Spo";
         const sheetURL = "https://docs.google.com/spreadsheets/d/1QMxd2qEVsn_74jvpWZsQj0C6S0oI0hRECM3h1T0S--w/gviz/tq?tqx=out:csv";
+        function formatCompact(num) {
+            if (num >= 1_000_000_000) {
+                return (num / 1_000_000_000).toFixed(2).replace(/\.00$/, "") + "B+";
+            }
+            if (num >= 1_000_000) {
+                return (num / 1_000_000).toFixed(2).replace(/\.00$/, "") + "M+";
+            }
+            if (num >= 1_000) {
+                return (num / 1_000).toFixed(1).replace(/\.0$/, "") + "K+";
+            }
+            return num + "+";
+        }
         Promise.all([fetch(youtubeAPI).then(res => res.json()), fetch(sheetURL).then(res => res.text())]).then(([ytData, sheetCSV]) => {
             const stats = ytData.items[0].statistics;
             const rows = sheetCSV.trim().split("\n");
@@ -135,7 +147,7 @@
                     </div>
                     <div class="youtube-section">
                         <span class="material-icons">group</span>
-                        ${totalViews.toLocaleString()}
+                        ${formatCompact(totalViews)}
                         <div class="youtube-label">total views</div>
                     </div>
                     <div class="youtube-section">
