@@ -54,7 +54,14 @@ function makeCarousel(id, element, time) {
 makeCarousel('PLwG4ajavaJ9KSrTa6czhS00Kz7DtNUdAI', 'carousel-1', 7000);
 makeCarousel('PLwG4ajavaJ9JYGO108KOpAvCPLozgPGYY', 'carousel-2', 11000);
 makeCarousel('PLwG4ajavaJ9IU7fU7LiHL7Ycup1KKAen6', 'carousel-3', 19000);
-makeCarousel('PLwG4ajavaJ9K68cpStVsCS6OCUEf9Mg3i', 'carousel-4', 23000);
+makeCarousel('PLwG4ajavaJ9K68cpStVsCS6OCUEf9Mg3i', 'carousel-4', 12000);
+makeCarousel('PLwG4ajavaJ9ICgOG3V3LQ4pLAgyEkTXcW', 'carousel-5', 15000);
+makeCarousel('PLwG4ajavaJ9JHb5N_gejAVDlCcGjRX8yn', 'carousel-6', 6000);
+makeCarousel('PLwG4ajavaJ9IBS9-ALsRtwmzm6vGJ1s9S', 'carousel-7', 18000);
+makeCarousel('PLwG4ajavaJ9LYVj9Dx9GbjHPpatAtGXex', 'carousel-8', 22000);
+makeCarousel('PLwG4ajavaJ9ISPRz3HCoiwgBixYL-QOlv', 'carousel-9', 10000);
+makeCarousel('PLwG4ajavaJ9Iq86yebteEOQXQfcdbv5Kf', 'carousel-10', 8000);
+makeCarousel('PLwG4ajavaJ9KPVu--zYXzGJ4U3JVxcn_C', 'carousel-11', 20000);
 function flickIT(element, time) {
     new Flickity('#' + element, {
         cellAlign: 'left',
